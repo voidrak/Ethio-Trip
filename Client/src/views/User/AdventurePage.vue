@@ -9,15 +9,16 @@ import hotImage from '/img/hot.jpg'
 <template>
   <UserHeader />
 
-  <h1 class="heading adventureh1">Adventure Activities</h1>
-  <div class="adventurepage">
+  <h1 class="text-center mt-12 font-bold mb-10 text-6xl text-[#1cb7bf]   ">Adventure Activities</h1>
 
+  <div class="w-[20%] mx-auto size-2.5 bg-gray-500 "></div>
+  <div class="grid gap-y-16 mt-16">
 
     <div class="container text-center post" id="heli">
-      <div class="row">
-        <div class="col">
-          <img :src="campImage" alt="img-1">
-        </div>
+      <div class="grid grid-cols-2 justify-between">
+
+        <img :src="campImage" alt="img-1">
+
         <div class="col">
           <h5>Camping</h5>
           <p>Danakil Depression
@@ -45,7 +46,7 @@ import hotImage from '/img/hot.jpg'
     </div>
 
     <div class="container text-center post">
-      <div class="row">
+      <div class="grid grid-cols-2 justify-between">
         <div class="col">
           <h5>Paragliding</h5>
           <p>Lake Tana and the Blue Nile Falls
@@ -57,17 +58,17 @@ import hotImage from '/img/hot.jpg'
             Best For: Paragliding enthusiasts and those seeking an adrenaline rush.
           </p>
         </div>
-        <div class="col">
-          <img :src="parImage" alt="img-1">
-        </div>
+
+        <img :src="parImage" class="ml-auto" alt="img-1">
+
       </div>
     </div>
 
     <div class="container text-center post" id="safa">
-      <div class="row">
-        <div class="col">
-          <img :src="hikImage" alt="img-1">
-        </div>
+      <div class="grid grid-cols-2 justify-between">
+
+        <img :src="hikImage" alt="img-1">
+
         <div class="col">
           <h5>Hiking</h5>
           <p>Simien Mountains National Park
@@ -96,7 +97,7 @@ import hotImage from '/img/hot.jpg'
     </div>
 
     <div class="container text-center post">
-      <div class="row">
+      <div class="grid grid-cols-2 justify-between">
 
         <div class="col">
           <h5>Hot Air Ballooning</h5>
@@ -110,9 +111,9 @@ import hotImage from '/img/hot.jpg'
             perspective.</p>
         </div>
 
-        <div class="col">
-          <img :src="hotImage">
-        </div>
+
+        <img class="ml-auto" :src="hotImage">
+
       </div>
     </div>
 
