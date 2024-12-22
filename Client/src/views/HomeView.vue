@@ -112,13 +112,13 @@ import bestImage3 from '/img/best3.jpg';
               <RouterLink :to="{ name: 'AboutUs' }" class="navbar-link">About Us</RouterLink>
 
 
-              <li>
-                <a href="map.html" class="navbar-link" data-nav-link>Destination</a>
-              </li>
 
-              <li>
-                <a href="adventure.html" class="navbar-link" data-nav-link>Adventure</a>
-              </li>
+              <RouterLink :to="{ name: 'Destination' }" class="navbar-link" data-nav-link>Destination</RouterLink>
+
+
+
+              <RouterLink :to="{ name: 'Adventure' }" class="navbar-link" data-nav-link>Adventure</RouterLink>
+
 
 
 
