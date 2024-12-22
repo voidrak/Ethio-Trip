@@ -1,186 +1,97 @@
 <script setup>
 import UserHeader from '@/components/User/UserHeader.vue';
-
+import bluImage from '/img/blu.jpg'
+import tigImage from '/img/tig4.jpg'
 </script>
 
 <template>
 
   <UserHeader />
-  <section class="wrapper">
-    <div class="container">
-      <div class="row">
-        <div class="col text-center mb-5">
-          <h1 class="display-4"><b>Best Places to visit in Ethiopia</b></h1>
-          <p class="lead"><i>Plan your travel itinerary with our list of the best places to visit in Ethiopia.</i>
-          </p>
+  <section class="">
+    <div class="my-8 ">
+      <div class="  text-center ">
+        <h1 class="font-bold text-3xl my-1">Best Places to visit in Ethiopia</h1>
+        <p class=""><i>Plan your travel itinerary with our list of the best places to visit in Ethiopia.</i> </p>
+      </div>
+    </div>
+    <div class="max-w-screen-lg mx-auto grid grid-cols-3 gap-8">
+
+
+      <div class="h-[480px]   relative rounded-3xl cursor-pointer bg-no-repeat bg-cover text-white  "
+        style="background-image:url(img/best2.jpg);">
+
+        <div class="absolute top-0 left-0  rounded-3xl h-full w-full bg-black/45 "></div>
+
+        <div class="isolate flex flex-col justify-between h-full pt-4 pb-6">
+          <div class=" px-4  mb-6 mt-8">
+            <h4>#the omo valley</h4>
+            <h1 class="text-xl uppercase ">omo valley</h1>
+            <p class="text-xs text-gray-200 mt-2"><i class="far fa-clock"></i> Nov 9, 2024</p>
+          </div>
+
+          <p
+            class=" ml-6 max-w-[150px]  cursor-pointer border-2 border-green-950 py-2  text-center hover:bg-black hover:text-white px-4 rounded-xl">
+            Know More!!</p>
+        </div>
+
+      </div>
+      <div class="h-[480px]   relative rounded-3xl cursor-pointer bg-no-repeat bg-cover text-white  "
+        style="background-image:url(img/best1.jpg);">
+
+        <div class="absolute top-0 left-0  rounded-3xl h-full w-full bg-black/45 "></div>
+
+        <div class="isolate flex flex-col justify-between h-full pt-4 pb-6">
+          <div class=" px-4  mb-6 mt-8">
+            <h4>#sof omar cave</h4>
+            <h1 class="text-xl uppercase ">sof omar
+              cave</h1>
+            <p class="text-xs text-gray-200 mt-2"><i class="far fa-clock"></i> Nov 9, 2024</p>
+          </div>
+
+          <p
+            class=" ml-6 max-w-[150px]  cursor-pointer border-2 border-green-950 py-2  text-center hover:bg-black hover:text-white px-4 rounded-xl">
+            Know More!!</p>
         </div>
       </div>
 
-      <div class="Manali-section" id="Manali">
-        <div class="city pb-4">
-          <h1></h1>
-        </div>
+      <div class="h-[480px]   relative rounded-3xl cursor-pointer bg-no-repeat bg-cover text-white  "
+        style="background-image:url(img/d.webp);">
 
-        <div class="row">
+        <div class="absolute top-0 left-0  rounded-3xl h-full w-full bg-black/45 "></div>
 
-
-          <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
-            <div class="card text-black card-has-bg click-col" style="background-image:url(img/best1.jpg);">
-              <img class="card-img d-none" src="https://cdn.pixabay.com/photo/2020/05/22/11/20/manali-5205016_640.jpg"
-                alt="">
-              <div class="card-img-overlay d-flex flex-column">
-                <div class="card-body">
-                  <h4>#sof omar cave</h4>
-                  <h1 class="card-title mt-0 "><a class="text-black" href="sof.html" style="text-decoration: none;">sof
-                      omar cave</a></h1>
-                  <small><i class="far fa-clock"></i> Nov 9, 2024</small>
-                </div>
-                <div class="card-footer">
-                  <div class="media">
-
-                    <div class="media-body">
-                      <button class="btn btn-primary navbar-link" onclick="m()">Know More!!</button>
-
-
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-
-            </div>
+        <div class="isolate flex flex-col justify-between h-full pt-4 pb-6">
+          <div class=" px-4  mb-6 mt-8">
+            <h4>#Visit Dankil depression</h4>
+            <h1 class="text-xl uppercase ">Dankil depression</h1>
+            <p class="text-xs text-gray-200 mt-2"><i class="far fa-clock"></i> Nov 9, 2024</p>
           </div>
 
-
-
-
-          <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
-            <div class="card text-black card-has-bg click-col" style="background-image:url(img/best2.jpg);">
-              <img class="card-img d-none"
-                src="https://i.pinimg.com/736x/3a/e7/6e/3ae76e15e4df8f76993f92e7f9f3c7ae.jpg">
-              <div class="card-img-overlay d-flex flex-column">
-                <div class="card-body">
-                  <h4>#the omo valley</h4>
-                  <h1 class="card-title mt-0 "><a class="text-black" href="omo.html" style="text-decoration: none;">
-                      omo
-                      valley</a></h1>
-                  <small><i class="far fa-clock"></i> Nov 9, 2024</small>
-                </div>
-                <div class="card-footer">
-                  <div class="media">
-
-                    <div class="media-body">
-                      <button class="btn btn-primary navbar-link" onclick="s()">Know More!!</button>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-
-
-          <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
-            <div class="card text-black card-has-bg click-col" style="background-image:url(img/d.webp);">
-              <img class="card-img d-none"
-                src="https://thumbs.dreamstime.com/b/people-walking-inside-hadimba-temple-situated-inside-pine-tree-forest-near-old-manali-himachal-pradesh-people-walking-inside-200021517.jpg">
-              <div class="card-img-overlay d-flex flex-column">
-                <div class="card-body">
-                  <h4>#Visit Dankil depression</h4>
-                  <h1 class="card-title mt-0 "><a class="text-black" href="dankil.html"
-                      style="text-decoration: none;">Dankil depression</a></h1>
-                  <small><i class="far fa-clock"></i> Nov 9, 2024</small>
-                </div>
-                <div class="card-footer">
-                  <div class="media">
-
-                    <div class="media-body">
-                      <button class="btn btn-primary navbar-link" onclick="h()">Know More!!</button>
-
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-
-          <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
-            <div class="card text-black card-has-bg click-col" style="background-image:url('img/semen\ 1.jpg');">
-              <img class="card-img d-none"
-                src="https://images.unsplash.com/photo-1638951239897-89cea3d899de?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8a3Vmcml8ZW58MHx8MHx8fDA%3D">
-              <div class="card-img-overlay d-flex flex-column">
-                <div class="card-body">
-                  <h4>#Visit simien mountain</h4>
-                  <h1 class="card-title mt-0 "><a class="text-black" href="simien.html"
-                      style="text-decoration: none;">simin mount</a></h1>
-                  <small><i class="far fa-clock"></i> Nov 9, 2024</small>
-                </div>
-                <div class="card-footer">
-                  <div class="media">
-
-                    <div class="media-body">
-                      <button class="btn btn-primary navbar-link" onclick="k()">Know More!!</button>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
-            <div class="card text-black card-has-bg click-col" style="background-image:url('img/blu.jpg');">
-              <img class="card-img d-none" src="img/blu.jpg">
-              <div class="card-img-overlay d-flex flex-column">
-                <div class="card-body">
-                  <h4>#Visit lake tana and blue nile falls</h4>
-                  <h1 class="card-title mt-0 "><a class="text-black" href="tana.html"
-                      style="text-decoration: none;">lake
-                      tana </a></h1>
-                  <small><i class="far fa-clock"></i> Nov 9, 2024</small>
-                </div>
-                <div class="card-footer">
-                  <div class="media">
-
-                    <div class="media-body">
-                      <button class="btn btn-primary navbar-link">Know More!!</button>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
-            <div class="card text- white card-has-bg click-col" style="background-image:url('img/tig4.jpg');">
-              <img class="card-img d-none" src="img/tig4.jpg">
-              <div class="card-img-overlay d-flex flex-column">
-                <div class="card-body">
-                  <h4>#Visit Tigray rock-hewn church (Gheralta)</h4>
-                  <h1 class="card-title mt-0 "><a class="text-black" href="tigray.html"
-                      style="text-decoration: none;">Gheralta</a></h1>
-                  <small><i class="far fa-clock"></i> Nov 9, 2024</small>
-                </div>
-                <div class="card-footer">
-                  <div class="media">
-
-                    <div class="media-body">
-                      <button class="btn btn-primary navbar-link" onclick="de()">Know More!!</button>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <p
+            class=" ml-6 max-w-[150px]  cursor-pointer border-2 border-green-950 py-2  text-center hover:bg-black hover:text-white px-4 rounded-xl">
+            Know More!!</p>
         </div>
       </div>
+
+
+      <div class="h-[480px]   relative rounded-3xl cursor-pointer bg-no-repeat bg-cover text-white  "
+        style="background-image:url(img/semen\ 1.jpg);">
+
+        <div class="absolute top-0 left-0  rounded-3xl h-full w-full bg-black/45 "></div>
+
+        <div class="isolate flex flex-col justify-between h-full pt-4 pb-6">
+          <div class=" px-4  mb-6 mt-8">
+            <h4>#Visit simien mountain</h4>
+            <h1 class="text-xl uppercase ">simien mountain</h1>
+            <p class="text-xs text-gray-200 mt-2"><i class="far fa-clock"></i> Nov 9, 2024</p>
+          </div>
+
+          <p
+            class=" ml-6 max-w-[150px]  cursor-pointer border-2 border-green-950 py-2  text-center hover:bg-black hover:text-white px-4 rounded-xl">
+            Know More!!</p>
+        </div>
+      </div>
+
+
     </div>
   </section>
 </template>
