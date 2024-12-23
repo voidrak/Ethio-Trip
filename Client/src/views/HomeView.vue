@@ -24,19 +24,19 @@ import bestImage3 from '/img/best3.jpg';
 
       <div class="header-top">
         <div class="container">
-          <a href="#" class="#">
+          <p class="#">
 
-            <div class="">
-              <!-- <ion-icon name=""></ion-icon> -->
-            </div>
+          <div class="">
+            <!-- <ion-icon name=""></ion-icon> -->
+          </div>
 
-            <div class="wrapper">
-              <p class="helpline-title"></p>
+          <div class="wrapper">
+            <p class="helpline-title"></p>
 
-              <p class="helpline-number"></p>
-            </div>
+            <p class="helpline-number"></p>
+          </div>
 
-          </a>
+          </p>
 
 
           <a href="index.html" class="logo">
@@ -62,12 +62,12 @@ import bestImage3 from '/img/best3.jpg';
           <ul class="social-list">
 
             <li>
-              <a href="#" class="social-link">
+              <p class="social-link">
                 <svg class="size-4 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                   <path
                     d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z" />
                 </svg>
-              </a>
+              </p>
             </li>
 
             <li>
@@ -80,12 +80,12 @@ import bestImage3 from '/img/best3.jpg';
             </li>
 
             <li>
-              <a href="#" class="social-link">
+              <p class="social-link">
                 <svg class="size-4 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                   <path
                     d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zm-317.5 213.5V175.2l142.7 81.2-142.7 81.2z" />
                 </svg>
-              </a>
+              </p>
             </li>
 
           </ul>
@@ -102,7 +102,7 @@ import bestImage3 from '/img/best3.jpg';
             <ul class="navbar-list">
 
 
-              <RouterLink :to="{ name: 'Home' }" href="index.html" class="navbar-link" data-nav-link>Home</RouterLink>
+              <RouterLink :to="{ name: 'Home' }" class="navbar-link" data-nav-link>Home</RouterLink>
 
 
 
@@ -168,8 +168,7 @@ import bestImage3 from '/img/best3.jpg';
             </p>
 
             <ul class="popular-list">
-
-              <li>
+              <RouterLink :to="{ name: 'PackageDetail' }">
                 <div class="popular-card">
 
                   <figure class="card-img">
@@ -202,11 +201,11 @@ import bestImage3 from '/img/best3.jpg';
                     </div>
 
                     <p class="card-subtitle">
-                      <a href="#">Addis Ababa </a>
+                    <p>Addis Ababa </p>
                     </p>
 
                     <h3 class="h3 card-title">
-                      <a href="addis.html">Addis Ababa</a>
+                      <span>Addis Ababa</span>
                     </h3>
 
                     <p class="card-text">
@@ -217,9 +216,9 @@ import bestImage3 from '/img/best3.jpg';
                   </div>
 
                 </div>
-              </li>
+              </RouterLink>
 
-              <li>
+              <RouterLink :to="{ name: 'PackageDetail' }">
                 <div class="popular-card">
 
                   <figure class="card-img">
@@ -252,11 +251,11 @@ import bestImage3 from '/img/best3.jpg';
                     </div>
 
                     <p class="card-subtitle">
-                      <a href="#">Gondar, fasil </a>
+                    <p>Gondar, fasil </p>
                     </p>
 
                     <h3 class="h3 card-title">
-                      <a href="gondar.html">gondar and fasil ghebbi</a>
+                      <span>gondar and fasil ghebbi</span>
                     </h3>
 
                     <p class="card-text">
@@ -267,9 +266,9 @@ import bestImage3 from '/img/best3.jpg';
                   </div>
 
                 </div>
-              </li>
+              </RouterLink>
 
-              <li>
+              <RouterLink :to="{ name: 'PackageDetail' }">
                 <div class="popular-card">
 
                   <figure class="card-img">
@@ -302,11 +301,11 @@ import bestImage3 from '/img/best3.jpg';
                     </div>
 
                     <p class="card-subtitle">
-                      <a href="#">Harar Jugol</a>
+                    <p>Harar Jugol</p>
                     </p>
 
                     <h3 class="h3 card-title">
-                      <a href="harar.html">Harar Jugol</a>
+                      <span>Harar Jugol</span>
                     </h3>
 
                     <p class="card-text">
@@ -317,14 +316,14 @@ import bestImage3 from '/img/best3.jpg';
                   </div>
 
                 </div>
-              </li>
+              </RouterLink>
 
 
 
 
+              <RouterLink :to="{ name: 'PackageDetail' }">
 
-              <li>
-                <div class="popular-card">
+                <div class="popular-card ">
 
                   <figure class="card-img">
                     <img :src="LalibelaImage" loading="lazy">
@@ -356,11 +355,11 @@ import bestImage3 from '/img/best3.jpg';
                     </div>
 
                     <p class="card-subtitle">
-                      <a href="#">Lalibela</a>
+                    <p>Lalibela</p>
                     </p>
 
                     <h3 class="h3 card-title">
-                      <a href="lalibela.html">Lalibela</a>
+                      <span>Lalibela</span>
                     </h3>
 
                     <p class="card-text">
@@ -372,7 +371,7 @@ import bestImage3 from '/img/best3.jpg';
                   </div>
 
                 </div>
-              </li>
+              </RouterLink>
             </ul>
 
             <button class="btn btn-primary navbar-link">More destintion</button>
@@ -500,7 +499,7 @@ import bestImage3 from '/img/best3.jpg';
                     d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z" />
                 </svg>
 
-                <a href="#" class="contact-link">ethio@gmail.com</a>
+                <p class="contact-link">ethio@gmail.com</p>
               </li>
 
               <li class="contact-item">
@@ -552,7 +551,7 @@ import bestImage3 from '/img/best3.jpg';
             </li>
 
             <li>
-              <a href="#" class="footer-bottom-link">FAQ</a>
+              <p class="footer-bottom-link">FAQ</p>
             </li>
 
           </ul>

@@ -4,6 +4,7 @@ import AboutUs from '@/views/User/AboutUs.vue'
 import DestinationPage from '@/views/User/DestinationPage.vue'
 import AdventurePage from '@/views/User/AdventurePage.vue'
 import PackagesPage from '@/views/User/PackagesPage.vue'
+import PackageDetailPage from '@/views/User/PackageDetailPage.vue'
 
 
 const router = createRouter({
@@ -33,6 +34,11 @@ const router = createRouter({
       path: '/packages',
       name: 'Packages',
       component: PackagesPage,
+    },
+    {
+      path: '/packages/id',
+      name: 'PackageDetail',
+      component: PackageDetailPage,
     },
 
   ],
