@@ -22,6 +22,7 @@ return new class extends Migration
             $table->boolean('food');
             $table->boolean('bus');
             $table->boolean('accommodation');
+            $table->string('package_image');
 
             $table->timestamps();
         });

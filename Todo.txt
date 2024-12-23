@@ -19,7 +19,10 @@ Images For packages
 
 TODO
   - Check Out Page After Packages Detail   ✅
+  - Create Login and Register Page
   - Edit The route to take to login if user to auth
+  - Create Package for Admin
+  - Display The Package on User
   - Edit The packages detail page route to have dynamic id (/packages/:id)
 
 
