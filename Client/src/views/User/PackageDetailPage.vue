@@ -146,8 +146,8 @@ import addisImage5 from '/img/addis6.jpg'
       </article>
     </div>
 
-    <RouterLink :to="{ name: 'Adventure' }"
-      class=" border-2  py-2 px-5 rounded-2xl text-xl w-[150px] mx-auto mt-8 flex items-center justify-center border-black hover:bg-green-500 hover:border-green-500 ease-linear duration-300 transition-all hover:text-white">
+    <RouterLink :to="{ name: 'CheckoutPage' }"
+      class=" border-2  py-2 px-5 rounded-2xl text-xl w-[150px] mx-auto mt-8 flex items-center justify-center border-black hover:bg-green-500 hover:border-green-500 hover:text-white ease-linear duration-300 transition-all ">
       Book Now
     </RouterLink>
   </section>
@@ -157,6 +157,7 @@ import addisImage5 from '/img/addis6.jpg'
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;1,100;1,300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
+
 
 
 

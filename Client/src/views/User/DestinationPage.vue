@@ -30,9 +30,11 @@ import tigImage from '/img/tig4.jpg'
             <p class="text-xs text-gray-200 mt-2"><i class="far fa-clock"></i> Nov 9, 2024</p>
           </div>
 
-          <p
-            class=" ml-6 max-w-[150px]  cursor-pointer border-2 border-gray-300 py-2  text-center hover:bg-black hover:text-white px-4 rounded-xl">
-            Know More!!</p>
+          <RouterLink :to="{ name: 'PackageDetail' }">
+            <p
+              class=" ml-6 max-w-[150px]  cursor-pointer border-2 border-gray-300 py-2  text-center hover:bg-blue-500 hover:border-blue-500 hover:text-white px-4 rounded-xl">
+              Know More!!</p>
+          </RouterLink>
         </div>
 
       </div>
@@ -50,9 +52,11 @@ import tigImage from '/img/tig4.jpg'
             <p class="text-xs text-gray-200 mt-2"><i class="far fa-clock"></i> Nov 9, 2024</p>
           </div>
 
-          <p
-            class=" ml-6 max-w-[150px]  cursor-pointer border-2 border-gray-300 py-2  text-center hover:bg-black hover:text-white px-4 rounded-xl">
-            Know More!!</p>
+          <RouterLink :to="{ name: 'PackageDetail' }">
+            <p
+              class=" ml-6 max-w-[150px]  cursor-pointer border-2 border-gray-300 py-2  text-center hover:bg-blue-500 hover:border-blue-500 hover:text-white px-4 rounded-xl">
+              Know More!!</p>
+          </RouterLink>
         </div>
       </div>
 
@@ -69,9 +73,11 @@ import tigImage from '/img/tig4.jpg'
             <p class="text-xs text-gray-200 mt-2"><i class="far fa-clock"></i> Nov 9, 2024</p>
           </div>
 
-          <p
-            class=" ml-6 max-w-[150px]  cursor-pointer border-2 border-gray-300 py-2  text-center hover:bg-black hover:text-white px-4 rounded-xl">
-            Know More!!</p>
+          <RouterLink :to="{ name: 'PackageDetail' }">
+            <p
+              class=" ml-6 max-w-[150px]  cursor-pointer border-2 border-gray-300 py-2  text-center hover:bg-blue-500 hover:border-blue-500 hover:text-white px-4 rounded-xl">
+              Know More!!</p>
+          </RouterLink>
         </div>
       </div>
 
@@ -89,9 +95,11 @@ import tigImage from '/img/tig4.jpg'
             <p class="text-xs text-gray-200 mt-2"><i class="far fa-clock"></i> Nov 9, 2024</p>
           </div>
 
-          <p
-            class=" ml-6 max-w-[150px]  cursor-pointer border-2 border-gray-300 py-2  text-center hover:bg-black hover:text-white px-4 rounded-xl">
-            Know More!!</p>
+          <RouterLink :to="{ name: 'PackageDetail' }">
+            <p
+              class=" ml-6 max-w-[150px]  cursor-pointer border-2 border-gray-300 py-2  text-center hover:bg-blue-500 hover:border-blue-500 hover:text-white px-4 rounded-xl">
+              Know More!!</p>
+          </RouterLink>
         </div>
       </div>
 

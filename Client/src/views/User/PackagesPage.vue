@@ -75,6 +75,7 @@ import UserHeader from '@/components/User/UserHeader.vue';
           </div>
 
           <div class="card-price">
+            <p class="my-2">Available Space 5</p>
 
             <div class="wrapper">
 
@@ -109,7 +110,9 @@ import UserHeader from '@/components/User/UserHeader.vue';
               Rs 12,999
               <span class="text-black font-bold">/ per person</span>
             </p>
-            <button class="btn btn-secondary">Book Now</button>
+            <RouterLink :to="{ name: 'CheckoutPage' }">
+              <button class="btn btn-secondary">Book Now</button>
+            </RouterLink>
           </div>
         </div>
 
@@ -170,6 +173,7 @@ import UserHeader from '@/components/User/UserHeader.vue';
           </div>
 
           <div class="card-price">
+            <p class="my-2">Available Space 25</p>
 
             <div class="wrapper">
 
@@ -202,12 +206,13 @@ import UserHeader from '@/components/User/UserHeader.vue';
             </div>
 
             <p class="price">
-              Rs 2,999
+              Br 2,999
               <span class="text-black font-bold">/ per person</span>
             </p>
 
-            <button class="btn btn-secondary" onclick="desi()">Book Now</button>
-
+            <RouterLink :to="{ name: 'CheckoutPage' }">
+              <button class="btn btn-secondary">Book Now</button>
+            </RouterLink>
 
 
           </div>

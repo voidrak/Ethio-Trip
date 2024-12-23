@@ -9,6 +9,7 @@ import bestImage2 from '/img/best2.jpg';
 import gondarImage2 from '/img/Gonder.jpg';
 import bestImage4 from '/img/best4.jpg';
 import bestImage3 from '/img/best3.jpg';
+import PackagesPage from './User/PackagesPage.vue';
 </script>
 
 <template>
@@ -146,10 +147,18 @@ import bestImage3 from '/img/best3.jpg';
             </p>
 
             <div class="btn-group">
-              <button class="btn btn-secondary navbar-link">Trip Packages</button>
+              <RouterLink :to="PackagesPage"
+                class="text-white px-4 py-3 hover:border-blue-700 hover:border-2  border border-gray-300 rounded-2xl">
+                Trip
+                Packages
+              </RouterLink>
+              <RouterLink :to="PackagesPage"
+                class="text-white px-4 py-3 hover:border-blue-700 hover:border-2  border border-gray-300 rounded-2xl">
+                Hire a Guide
+              </RouterLink>
 
 
-              <button class="btn btn-secondary navbar-link">Hire a Guide</button>
+              <!-- <button class="btn btn-secondary navbar-link">Hire a Guide</button> -->
             </div>
 
 
