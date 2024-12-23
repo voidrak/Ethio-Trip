@@ -17,7 +17,8 @@ import tigImage from '/img/tig4.jpg'
     <div class="max-w-screen-lg mx-auto grid grid-cols-3 gap-8">
 
 
-      <div class="h-[480px]   relative rounded-3xl cursor-pointer bg-no-repeat bg-cover text-white  "
+      <div
+        class="h-[480px]   relative rounded-3xl cursor-pointer bg-no-repeat hover:scale-105 ease-linear duration-300 bg-cover text-white  "
         style="background-image:url(img/best2.jpg);">
 
         <div class="absolute top-0 left-0  rounded-3xl h-full w-full bg-black/45 "></div>
@@ -30,12 +31,13 @@ import tigImage from '/img/tig4.jpg'
           </div>
 
           <p
-            class=" ml-6 max-w-[150px]  cursor-pointer border-2 border-green-950 py-2  text-center hover:bg-black hover:text-white px-4 rounded-xl">
+            class=" ml-6 max-w-[150px]  cursor-pointer border-2 border-gray-300 py-2  text-center hover:bg-black hover:text-white px-4 rounded-xl">
             Know More!!</p>
         </div>
 
       </div>
-      <div class="h-[480px]   relative rounded-3xl cursor-pointer bg-no-repeat bg-cover text-white  "
+      <div
+        class="h-[480px]   relative rounded-3xl cursor-pointer bg-no-repeat hover:scale-105 ease-linear duration-300 bg-cover text-white  "
         style="background-image:url(img/best1.jpg);">
 
         <div class="absolute top-0 left-0  rounded-3xl h-full w-full bg-black/45 "></div>
@@ -49,12 +51,13 @@ import tigImage from '/img/tig4.jpg'
           </div>
 
           <p
-            class=" ml-6 max-w-[150px]  cursor-pointer border-2 border-green-950 py-2  text-center hover:bg-black hover:text-white px-4 rounded-xl">
+            class=" ml-6 max-w-[150px]  cursor-pointer border-2 border-gray-300 py-2  text-center hover:bg-black hover:text-white px-4 rounded-xl">
             Know More!!</p>
         </div>
       </div>
 
-      <div class="h-[480px]   relative rounded-3xl cursor-pointer bg-no-repeat bg-cover text-white  "
+      <div
+        class="h-[480px]   relative rounded-3xl cursor-pointer bg-no-repeat hover:scale-105 ease-linear duration-300 bg-cover text-white  "
         style="background-image:url(img/d.webp);">
 
         <div class="absolute top-0 left-0  rounded-3xl h-full w-full bg-black/45 "></div>
@@ -67,13 +70,14 @@ import tigImage from '/img/tig4.jpg'
           </div>
 
           <p
-            class=" ml-6 max-w-[150px]  cursor-pointer border-2 border-green-950 py-2  text-center hover:bg-black hover:text-white px-4 rounded-xl">
+            class=" ml-6 max-w-[150px]  cursor-pointer border-2 border-gray-300 py-2  text-center hover:bg-black hover:text-white px-4 rounded-xl">
             Know More!!</p>
         </div>
       </div>
 
 
-      <div class="h-[480px]   relative rounded-3xl cursor-pointer bg-no-repeat bg-cover text-white  "
+      <div
+        class="h-[480px]   relative rounded-3xl cursor-pointer bg-no-repeat hover:scale-105 ease-linear duration-300 bg-cover text-white  "
         style="background-image:url(img/semen\ 1.jpg);">
 
         <div class="absolute top-0 left-0  rounded-3xl h-full w-full bg-black/45 "></div>
@@ -86,7 +90,7 @@ import tigImage from '/img/tig4.jpg'
           </div>
 
           <p
-            class=" ml-6 max-w-[150px]  cursor-pointer border-2 border-green-950 py-2  text-center hover:bg-black hover:text-white px-4 rounded-xl">
+            class=" ml-6 max-w-[150px]  cursor-pointer border-2 border-gray-300 py-2  text-center hover:bg-black hover:text-white px-4 rounded-xl">
             Know More!!</p>
         </div>
       </div>

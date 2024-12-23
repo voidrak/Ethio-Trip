@@ -101,9 +101,9 @@ import bestImage3 from '/img/best3.jpg';
 
             <ul class="navbar-list">
 
-              <li>
-                <a href="index.html" class="navbar-link" data-nav-link>Home</a>
-              </li>
+
+              <RouterLink :to="{ name: 'Home' }" href="index.html" class="navbar-link" data-nav-link>Home</RouterLink>
+
 
 
 
