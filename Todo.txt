@@ -18,6 +18,7 @@ Images For packages
 
 
 TODO
+  - Check Out Page After Packages Detail   
   - Edit The packages detail page route to have dynamic id (/packages/:id)
 
 
