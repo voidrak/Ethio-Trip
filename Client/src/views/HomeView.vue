@@ -10,6 +10,11 @@ import gondarImage2 from '/img/Gonder.jpg';
 import bestImage4 from '/img/best4.jpg';
 import bestImage3 from '/img/best3.jpg';
 import PackagesPage from './User/PackagesPage.vue';
+import { useAuthStore } from '@/stores/auth';
+
+
+const authStore = useAuthStore()
+
 </script>
 
 <template>
@@ -126,8 +131,16 @@ import PackagesPage from './User/PackagesPage.vue';
             </ul>
 
           </nav>
+          <div class="flex gap-x-4  items-center" v-if="authStore.user">
+            <p class="text-white font-bold">{{ authStore.user.name }} </p>
+            <form @submit.prevent="authStore.logout" class="">
+              <button
+                class="hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-xl  px-3  py-2 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-red-500">Log
+                out</button>
+            </form>
 
-          <RouterLink :to="{ name: 'Login' }" class=" px-4 py-2 text-white rounded-lg bg-[#184c91]   ">Login
+          </div>
+          <RouterLink :to="{ name: 'Login' }" v-else class=" px-4 py-2 text-white rounded-lg bg-[#184c91]   ">Login
           </RouterLink>
 
         </div>
