@@ -8,7 +8,8 @@ import PackagesPage from '@/views/User/PackagesPage.vue'
 import PackageDetailPage from '@/views/User/PackageDetailPage.vue'
 import CheckoutPage from '@/views/User/CheckoutPage.vue'
 import AdminHome from '@/views/Admin/AdminHome.vue'
-import Login from '@/views/Auth/Login.vue';
+import LoginPage from '@/views/Auth/LoginPage.vue';
+import RegisterPage from '@/views/Auth/RegisterPage.vue';
 
 
 const router = createRouter({
@@ -22,7 +23,12 @@ const router = createRouter({
     {
       path: '/login',
       name: 'Login',
-      component: Login,
+      component: LoginPage,
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: RegisterPage,
     },
     {
       path: '/about',
