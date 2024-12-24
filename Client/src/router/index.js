@@ -8,6 +8,7 @@ import PackagesPage from '@/views/User/PackagesPage.vue'
 import PackageDetailPage from '@/views/User/PackageDetailPage.vue'
 import CheckoutPage from '@/views/User/CheckoutPage.vue'
 import AdminHome from '@/views/Admin/AdminHome.vue'
+import Login from '@/views/Auth/Login.vue';
 
 
 const router = createRouter({
@@ -17,6 +18,11 @@ const router = createRouter({
       path: '/',
       name: 'Home',
       component: HomeView,
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login,
     },
     {
       path: '/about',
@@ -47,37 +53,39 @@ const router = createRouter({
       path: '/packages/id/checkout',
       name: 'CheckoutPage',
       component: CheckoutPage,
+      meta: { auth: true },
+
     },
     {
       path: '/admin',
       name: 'AdminHome',
       component: AdminHome,
-      meta: { auth: true }
+      meta: { admin: true },
     },
 
   ],
 })
 
 
-// router.beforeEach(async (to, from) => {
-//   const authStore = useAuthStore();
-//   await authStore.getUser();
+router.beforeEach(async (to, from) => {
+  const authStore = useAuthStore();
+  await authStore.getUser();
 
-//   if (authStore.user?.role === "admin" && to.meta.guest) {
-//     return { name: "AdminHome" };
-//   }
-//   if (authStore.user?.role === "admin" && to.meta.auth) {
-//     return { name: "AdminHome" };
-//   }
-//   if (authStore.user?.role !== "admin" && to.meta.admin) {
-//     return { name: "Home" };
-//   }
-//   if (authStore.user && to.meta.guest) {
-//     return { name: "Home" };
-//   }
-//   if (!authStore.user && to.meta.auth) {
-//     return { name: "Home" };
-//   }
-// });
+  if (authStore.user?.role === "admin" && to.meta.guest) {
+    return { name: "AdminHome" };
+  }
+  if (authStore.user?.role === "admin" && to.meta.auth) {
+    return { name: "AdminHome" };
+  }
+  if (authStore.user?.role !== "admin" && to.meta.admin) {
+    return { name: "Home" };
+  }
+  if (authStore.user && to.meta.guest) {
+    return { name: "Home" };
+  }
+  if (!authStore.user && to.meta.auth) {
+    return { name: "Login" };
+  }
+});
 
 export default router

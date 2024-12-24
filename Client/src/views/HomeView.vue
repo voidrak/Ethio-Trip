@@ -127,7 +127,8 @@ import PackagesPage from './User/PackagesPage.vue';
 
           </nav>
 
-          <button class=" px-4 py-2 text-white rounded-lg bg-[#184c91]   ">Login</button>
+          <RouterLink :to="{ name: 'Login' }" class=" px-4 py-2 text-white rounded-lg bg-[#184c91]   ">Login
+          </RouterLink>
 
         </div>
       </div>
