@@ -8,11 +8,7 @@ import UserHeader from '@/components/User/UserHeader.vue';
   <div class="  bg-gray-100 text-gray-900 flex justify-center">
     <div class="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
       <div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
-        <div>
-          <img
-            src="https://storage.googleapis.com/devitary-image-host.appspot.com/15846435184459982716-LogoMakr_7POjrN.png"
-            class="w-32 mx-auto" />
-        </div>
+
         <div class="mt-4 flex flex-col items-center">
           <h1 class="text-2xl xl:text-3xl font-extrabold">
             Sign in
@@ -63,7 +59,7 @@ import UserHeader from '@/components/User/UserHeader.vue';
       </div>
       <div class="flex-1 bg-indigo-100 text-center hidden lg:flex">
         <div class="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat"
-          style="background-image: url('https://storage.googleapis.com/devitary-image-host.appspot.com/15848031292911696601-undraw_designer_life_w96d.svg');">
+          style="background-image: url('Login_Register.svg');">
         </div>
       </div>
     </div>

@@ -62,7 +62,7 @@ import UserHeader from '@/components/User/UserHeader.vue';
               <RouterLink :to="{ name: 'Login' }">
                 <p class="!mt-8 text-center text-sm text-gray-800">
                   Do have an account
-                  <span class="ml-1 whitespace-nowrap font-semibold text-blue-600 hover:underline">Register here
+                  <span class="ml-1 whitespace-nowrap font-semibold text-blue-600 hover:underline">Sign In
                   </span>
                 </p>
               </RouterLink>
@@ -72,7 +72,7 @@ import UserHeader from '@/components/User/UserHeader.vue';
       </div>
       <div class="flex-1 bg-indigo-100 text-center hidden lg:flex">
         <div class="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat"
-          style="background-image: url('https://storage.googleapis.com/devitary-image-host.appspot.com/15848031292911696601-undraw_designer_life_w96d.svg');">
+          style="background-image: url('Login_Register.svg');">
         </div>
       </div>
     </div>
