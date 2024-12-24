@@ -1,6 +1,27 @@
 <script setup>
 import UserHeader from '@/components/User/UserHeader.vue';
+import { useAuthStore } from "@/stores/auth";
+import { storeToRefs } from "pinia";
+import { onMounted, reactive } from "vue";
 
+const authStore = useAuthStore();
+const { errors } = storeToRefs(useAuthStore());
+
+const formData = reactive({
+  name: "",
+  email: "",
+  phone_number: "",
+  password: "",
+  password_confirmation: "",
+
+});
+
+
+const submitForm = () => {
+  authStore.authenticate("register", formData);
+};
+
+onMounted(() => (errors.value = {}));
 </script>
 
 <template>
@@ -27,27 +48,47 @@ import UserHeader from '@/components/User/UserHeader.vue';
               </div>
             </div>
 
-            <div class="mx-auto max-w-xs">
-              <input
+            <form @submit.prevent="submitForm" class="mx-auto max-w-xs">
+              <input v-model="formData.name"
                 class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-2"
                 id="name" name="name" type="text" placeholder="Full Name" />
-              <input
+              <p v-if="errors.name" class="text-sm text-red-500">
+                {{ errors.name[0] }}
+              </p>
+
+              <input v-model="formData.email"
                 class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-2"
                 id="email" name="email" type="email" placeholder="Email" />
-              <input
+              <p v-if="errors.email" class="text-sm text-red-500">
+                {{ errors.email[0] }}
+              </p>
+
+              <input v-model="formData.phone_number"
                 class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-2"
                 id="phone_number" name="phone_number" type="tel" placeholder="Phone Number" />
-              <input
+              <p v-if="errors.phone_number" class="text-sm text-red-500 mt-1">
+                Invalid Format! Use (0912345678) Format
+              </p>
+
+
+              <input v-model="formData.password"
                 class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-2"
                 id="password" name="password" type="password" placeholder="Password" />
-              <input
+              <p v-if="errors.password" class="text-sm text-red-500">
+                {{ errors.password[0] }}
+              </p>
+
+
+              <input v-model="formData.password_confirmation"
                 class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-2"
                 id="password_confirmation" name="password_confirmation" type="password"
                 placeholder="Confirm Password" />
+              <p v-if="errors.password_confirmation" class="text-sm text-red-500">
+                {{ errors.password_confirmation[0] }}
+              </p>
 
 
-
-              <button
+              <button type="submit"
                 class="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
                 <svg class="w-6 h-6 -ml-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                   stroke-linejoin="round">
@@ -56,17 +97,17 @@ import UserHeader from '@/components/User/UserHeader.vue';
                   <path d="M20 8v6M23 11h-6" />
                 </svg>
                 <span class="ml-3">
-                  Sign in
+                  Sign Up
                 </span>
               </button>
-              <RouterLink :to="{ name: 'Login' }">
-                <p class="!mt-8 text-center text-sm text-gray-800">
-                  Do have an account
-                  <span class="ml-1 whitespace-nowrap font-semibold text-blue-600 hover:underline">Sign In
-                  </span>
-                </p>
-              </RouterLink>
-            </div>
+            </form>
+            <RouterLink :to="{ name: 'Login' }">
+              <p class="!mt-8 text-center text-sm text-gray-800">
+                Do have an account
+                <span class="ml-1 whitespace-nowrap font-semibold text-blue-600 hover:underline">Sign In
+                </span>
+              </p>
+            </RouterLink>
           </div>
         </div>
       </div>
