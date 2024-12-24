@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone_number'
     ];
 
     /**
@@ -33,6 +34,12 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscription::class);
+    }
 
     /**
      * Get the attributes that should be cast.
