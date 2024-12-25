@@ -33,7 +33,7 @@ const authStore = useAuthStore()
           <p class="#">
 
           <div class="">
-            <!-- <ion-icon name=""></ion-icon> -->
+
           </div>
 
           <div class="wrapper">
@@ -54,7 +54,7 @@ const authStore = useAuthStore()
 
 
             <button class="nav-open-btn" aria-label="Open Menu" data-nav-open-btn>
-              <!-- <ion-icon name="menu-outline"></ion-icon> -->
+
             </button>
 
           </div>

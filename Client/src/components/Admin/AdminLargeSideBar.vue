@@ -13,9 +13,6 @@ const authStore = useAuthStore();
   <div
     class="sidebar lg relative col-span-3 hidden flex-col justify-between py-16  rounded-br-[50px] rounded-tr-[50px] bg-blue-700 px-4 md:flex lg:w-[330px]">
 
-    <RouterLink :to="{ name: 'Home' }">
-      <Logo />
-    </RouterLink>
 
     <div class="mb-24 space-y-6">
       <RouterLink :to="{ name: 'AdminHome' }" class="flex items-center gap-x-3 text-white">
@@ -34,7 +31,7 @@ const authStore = useAuthStore();
         </svg>
         <h1 class="cursor-pointer text-xl">Packages</h1>
       </RouterLink>
-      <RouterLink :to="{ name: 'PackageDetail' }" class="flex items-center gap-x-3 text-white">
+      <RouterLink :to="{ name: 'CreatePackage' }" class="flex items-center gap-x-3 text-white">
         <svg class="size-6 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
           <path
             d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zM200 344l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" />

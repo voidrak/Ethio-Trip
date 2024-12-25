@@ -10,6 +10,7 @@ import CheckoutPage from '@/views/User/CheckoutPage.vue'
 import AdminHome from '@/views/Admin/AdminHome.vue'
 import LoginPage from '@/views/Auth/LoginPage.vue';
 import RegisterPage from '@/views/Auth/RegisterPage.vue';
+import CreatePackage from '@/views/Admin/CreatePackage.vue';
 
 
 const router = createRouter({
@@ -19,41 +20,57 @@ const router = createRouter({
       path: '/',
       name: 'Home',
       component: HomeView,
+      meta: { guest: true },
+
     },
     {
       path: '/login',
       name: 'Login',
       component: LoginPage,
+      meta: { guest: true },
+
     },
     {
       path: '/register',
       name: 'Register',
       component: RegisterPage,
+      meta: { guest: true },
+
     },
     {
       path: '/about',
       name: 'AboutUs',
       component: AboutUs,
+      meta: { guest: true },
+
     },
     {
       path: '/destination',
       name: 'Destination',
       component: DestinationPage,
+      meta: { guest: true },
+
     },
     {
       path: '/adventure',
       name: 'Adventure',
       component: AdventurePage,
+      meta: { guest: true },
+
     },
     {
       path: '/packages',
       name: 'Packages',
       component: PackagesPage,
+      meta: { guest: true },
+
     },
     {
       path: '/packages/id',
       name: 'PackageDetail',
       component: PackageDetailPage,
+      meta: { guest: true },
+
     },
     {
       path: '/packages/id/checkout',
@@ -66,6 +83,12 @@ const router = createRouter({
       path: '/admin',
       name: 'AdminHome',
       component: AdminHome,
+      meta: { admin: true },
+    },
+    {
+      path: '/admin/create-package',
+      name: 'CreatePackage',
+      component: CreatePackage,
       meta: { admin: true },
     },
 
