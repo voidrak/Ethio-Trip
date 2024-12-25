@@ -10,7 +10,7 @@ class Package extends Model
     /** @use HasFactory<\Database\Factories\PackageFactory> */
     use HasFactory;
 
-    protected $fillable = ['package_name', ' package_description', 'duration ', '', '', 'price', 'available_space', 'location', 'food', 'bus', 'accommodation', 'package_image',];
+    protected $fillable = ['package_name', 'package_description', 'duration', 'price', 'available_space', 'location', 'food', 'bus', 'accommodation', 'package_image',];
 
 
     public function subscription()
