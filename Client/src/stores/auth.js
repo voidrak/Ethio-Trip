@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import router from "@/router";
+
 export const useAuthStore = defineStore("authStore", {
   state: () => {
     return {
@@ -10,12 +11,12 @@ export const useAuthStore = defineStore("authStore", {
   // getters: {},
   actions: {
     /********************* Get Authenticated User  ********************** */
-
     async getUser() {
       if (localStorage.getItem("token")) {
         const res = await fetch("/api/user", {
           headers: {
             authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json",
           },
         });
         const data = await res.json();
@@ -29,40 +30,37 @@ export const useAuthStore = defineStore("authStore", {
     async authenticate(apiRoute, formData) {
       const res = await fetch(`/api/${apiRoute}`, {
         method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(formData),
       });
 
       const data = await res.json();
-      if (data.errors) {
-        this.errors = data.errors;
-      } else {
-        console.log(this.user);
+      if (res.ok) {
         this.errors = {};
         localStorage.setItem("token", data.token);
         this.user = data.user;
         router.push({ name: "Home" });
+      } else {
+        this.errors = data.errors;
       }
     },
 
     /**************** Logout  ***************/
-
     async logout() {
       const res = await fetch("/api/logout", {
         method: "post",
         headers: {
           authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "application/json",
         },
       });
-
-      const data = await res.json();
-      console.log(data);
-
       if (res.ok) {
-        this.user = null;
-        this.errors = {};
         localStorage.removeItem("token");
+        this.user = null;
         router.push({ name: "Home" });
       }
-    },
-  },
+    }
+  }
 });

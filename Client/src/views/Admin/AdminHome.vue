@@ -1,6 +1,6 @@
 <script setup>
 import AdminLayout from '@/layout/AdminLayout.vue';
-
+import { usePackageStore } from '@/stores/package';
 import { computed, onMounted, ref } from 'vue';
 
 

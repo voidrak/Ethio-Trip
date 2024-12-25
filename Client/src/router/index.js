@@ -21,7 +21,7 @@ const router = createRouter({
       path: '/',
       name: 'Home',
       component: HomeView,
-      meta: { guest: true },
+
 
     },
     {
@@ -42,35 +42,31 @@ const router = createRouter({
       path: '/about',
       name: 'AboutUs',
       component: AboutUs,
-      meta: { guest: true },
-
     },
     {
       path: '/destination',
       name: 'Destination',
       component: DestinationPage,
-      meta: { guest: true },
 
     },
     {
       path: '/adventure',
       name: 'Adventure',
       component: AdventurePage,
-      meta: { guest: true },
+
 
     },
     {
       path: '/packages',
       name: 'Packages',
       component: PackagesPage,
-      meta: { guest: true },
 
     },
     {
       path: '/packages/id',
       name: 'PackageDetail',
       component: PackageDetailPage,
-      meta: { guest: true },
+
 
     },
     {
