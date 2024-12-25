@@ -10,6 +10,23 @@ export const usePackageStore = defineStore("packageStore", {
 
     actions: {
 
+        async getAllPackages() {
+            const res = await fetch("/api/packages", {
+                method: "Get",
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+            });
+            const data = await res.json();
+
+            if (data.errors) {
+                this.errors = data.errors;
+            } else {
+                this.errors = {};
+                return data
+            }
+        },
+
         /*********************  Create Package ********************** */
         async createPackage(formData) {
 

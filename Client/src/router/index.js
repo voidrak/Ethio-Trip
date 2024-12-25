@@ -11,6 +11,7 @@ import AdminHome from '@/views/Admin/AdminHome.vue'
 import LoginPage from '@/views/Auth/LoginPage.vue';
 import RegisterPage from '@/views/Auth/RegisterPage.vue';
 import CreatePackage from '@/views/Admin/CreatePackage.vue';
+import AdminPackagePage from '@/views/Admin/AdminPackagePage.vue';
 
 
 const router = createRouter({
@@ -89,6 +90,12 @@ const router = createRouter({
       path: '/admin/create-package',
       name: 'CreatePackage',
       component: CreatePackage,
+      meta: { admin: true },
+    },
+    {
+      path: '/admin/packages',
+      name: 'AdminPackages',
+      component: AdminPackagePage,
       meta: { admin: true },
     },
 
