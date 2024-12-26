@@ -11,7 +11,7 @@ const packages = ref([]);
 
 onMounted(async () => {
   packages.value = await getAllPackages();
-  console.log(packages)
+
 })
 </script>
 
@@ -137,7 +137,7 @@ onMounted(async () => {
               {{ packageItem.price }} Br
               <span class="text-black font-bold">/ per person</span>
             </p>
-            <RouterLink :to="{ name: 'CheckoutPage' }">
+            <RouterLink :to="{ name: 'CheckoutPage', params: { id: packageItem.id } }">
               <button class="btn btn-secondary">Book Now</button>
             </RouterLink>
           </div>

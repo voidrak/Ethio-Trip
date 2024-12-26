@@ -10,11 +10,27 @@ export const usePackageStore = defineStore("packageStore", {
 
     actions: {
 
+
+        async getPackage(packageId) {
+            const res = await fetch(`/api/packages/${packageId}`, {
+                method: 'GET',
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    "Content-Type": "application/json",
+                },
+            });
+            const data = await res.json();
+            return data
+
+        },
+
+
         async getAllPackages() {
             const res = await fetch("/api/packages", {
                 method: "Get",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    "Content-Type": "application/json",
                 },
             });
             const data = await res.json();
@@ -34,6 +50,7 @@ export const usePackageStore = defineStore("packageStore", {
                 method: "POST",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
+
                 },
                 body: formData,
             });

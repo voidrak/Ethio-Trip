@@ -13,6 +13,7 @@ Route::get('/user', function (Request $request) {
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/packages', [PackageController::class, 'index']);
+    Route::get('/packages/{package}', [PackageController::class, 'show']);
     Route::post('/packages', [PackageController::class, 'store'])->middleware(AdminMiddleware::class);;
     Route::delete('/packages/{package}', [PackageController::class, 'destroy'])->middleware(AdminMiddleware::class);;
 });

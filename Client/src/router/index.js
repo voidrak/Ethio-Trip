@@ -21,6 +21,7 @@ const router = createRouter({
       path: '/',
       name: 'Home',
       component: HomeView,
+      meta: { welcome: true },
 
 
     },
@@ -107,6 +108,9 @@ router.beforeEach(async (to, from) => {
     return { name: "AdminHome" };
   }
   if (authStore.user?.role === "admin" && to.meta.auth) {
+    return { name: "AdminHome" };
+  }
+  if (authStore.user?.role === "admin" && to.meta.welcome) {
     return { name: "AdminHome" };
   }
   if (authStore.user?.role !== "admin" && to.meta.admin) {
