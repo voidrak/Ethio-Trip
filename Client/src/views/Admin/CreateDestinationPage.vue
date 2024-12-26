@@ -3,10 +3,10 @@ import { PhotoIcon } from '@heroicons/vue/24/solid'
 
 import AdminLayout from '@/layout/AdminLayout.vue';
 import { reactive, ref } from 'vue';
-import { usePackageStore } from '@/stores/package';
+import { useDestinationStore } from '@/stores/destination';
 
 
-const { createPackage } = usePackageStore()
+const { createDestination } = useDestinationStore()
 
 const formData = reactive({
   destination_title: '',
@@ -88,19 +88,21 @@ const getImage_5 = (event) => {
 
 const submitForm = async () => {
   console.log(formData);
-  // const form = new FormData();
-  // form.append('destination_title', formData.destination_title);
-  // form.append('destination_description', formData.destination_description);
-  // form.append('best_time_to_visit', formData.best_time_to_visit);
-  // form.append('accommodation_option', formData.accommodation_option);
-  // form.append('place_to_visit', formData.place_to_visit);
-  // form.append('tips_for_visitors', formData.tips_for_visitors);
-  // form.append('banner_image', formData.banner_image ? 1 : 0);
-  // form.append('image_1', formData.image_1 ? 1 : 0);
-  // form.append('image_2', formData.image_2 ? 1 : 0);
-  // form.append('image_4', formData.image_4);
+  const form = new FormData();
+  form.append('destination_title', formData.destination_title);
+  form.append('destination_description', formData.destination_description);
+  form.append('best_time_to_visit', formData.best_time_to_visit);
+  form.append('accommodation_option', formData.accommodation_option);
+  form.append('place_to_visit', formData.place_to_visit);
+  form.append('tips_for_visitors', formData.tips_for_visitors);
+  form.append('banner_image', formData.banner_image);
+  form.append('image_1', formData.image_1);
+  form.append('image_2', formData.image_2);
+  form.append('image_3', formData.image_3);
+  form.append('image_4', formData.image_4);
+  form.append('image_5', formData.image_5);
 
-  // await createPackage(form);
+  await createDestination(form);
 };
 </script>
 

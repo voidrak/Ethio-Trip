@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Middleware\AdminMiddleware;
@@ -17,7 +18,6 @@ Route::get('/user', function (Request $request) {
 
 
 Route::get('/packages', [PackageController::class, 'index']);
-
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/packages/{package}', [PackageController::class, 'show']);
     Route::post('/packages', [PackageController::class, 'store'])->middleware(AdminMiddleware::class);;
@@ -25,9 +25,22 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 
+
+
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/subscriptions', [SubscriptionController::class, 'index']);
     Route::post('/subscriptions', [SubscriptionController::class, 'store']);
+});
+
+
+
+
+
+Route::get('/destinations/{destination}', [DestinationController::class, 'show']);
+Route::middleware('auth:sanctum')->group(function () {
+
+    Route::post('/destinations', [DestinationController::class, 'store'])->middleware(AdminMiddleware::class);;
+    Route::delete('/destinations/{destination}', [DestinationController::class, 'destroy'])->middleware(AdminMiddleware::class);;
 });
 
 
