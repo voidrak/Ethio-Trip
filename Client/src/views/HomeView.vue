@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import AddisAbebaImage from "/addis ababa/ethio.jpg"
 import GondarImage from "/gondar and fasil ghebbi/gon.jpg"
 import HararImage from "/img/harer.jpg"
@@ -11,9 +11,21 @@ import bestImage4 from '/img/best4.jpg';
 import bestImage3 from '/img/best3.jpg';
 import PackagesPage from './User/PackagesPage.vue';
 import { useAuthStore } from '@/stores/auth';
+import { usePackageStore } from '@/stores/package';
 
+const baseUrl = import.meta.env.VITE_BASE_URL;
 
+const { getAllPackages } = usePackageStore()
 const authStore = useAuthStore()
+
+const packages = ref([]);
+
+onMounted(async () => {
+  packages.value = await getAllPackages();
+  console.log(packages)
+})
+
+
 
 </script>
 
@@ -119,7 +131,6 @@ const authStore = useAuthStore()
 
 
 
-              <RouterLink :to="{ name: 'Destination' }" class="navbar-link" data-nav-link>Destination</RouterLink>
 
 
 
@@ -179,7 +190,7 @@ const authStore = useAuthStore()
           </div>
         </section>
 
-        <section class="popular" id="destination">
+        <section v-if="packages.length" class="popular" id="destination">
           <div class="container">
 
             <p class="section-subtitle">Uncover place</p>
@@ -191,11 +202,11 @@ const authStore = useAuthStore()
             </p>
 
             <ul class="popular-list">
-              <RouterLink :to="{ name: 'PackageDetail' }">
+              <RouterLink v-for="(packageItem, index) in packages" :key="index" :to="{ name: 'PackageDetail' }">
                 <div class="popular-card">
 
                   <figure class="card-img">
-                    <img :src="AddisAbebaImage" loading="lazy">
+                    <img :src="`${baseUrl}/storage/${packageItem.package_image}`" loading="lazy">
                   </figure>
 
                   <div class="card-content">
@@ -224,116 +235,15 @@ const authStore = useAuthStore()
                     </div>
 
                     <p class="card-subtitle">
-                    <p>Addis Ababa </p>
+                    <p>{{ packageItem.location }} </p>
                     </p>
 
                     <h3 class="h3 card-title">
-                      <span>Addis Ababa</span>
+                      <span>{{ packageItem.package_name }}</span>
                     </h3>
 
-                    <p class="card-text">
-                      Addis Ababa, capital and largest city of Ethiopia. It is located on a well-watered plateau
-                      surrounded by hills and mountains in the geographic centre of the country.
-                    </p>
-
-                  </div>
-
-                </div>
-              </RouterLink>
-
-              <RouterLink :to="{ name: 'PackageDetail' }">
-                <div class="popular-card">
-
-                  <figure class="card-img">
-                    <img :src="GondarImage" loading="lazy">
-                  </figure>
-
-                  <div class="card-content">
-
-                    <div class="card-rating">
-                      <svg class="fill-white size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                        <path fill="#ffffff"
-                          d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                      </svg>
-                      <svg class="fill-white size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                        <path fill="#ffffff"
-                          d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                      </svg>
-                      <svg class="fill-white size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                        <path fill="#ffffff"
-                          d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                      </svg>
-                      <svg class="fill-white size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                        <path fill="#ffffff"
-                          d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                      </svg>
-                      <svg class="fill-white size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                        <path fill="#ffffff"
-                          d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                      </svg>
-                    </div>
-
-                    <p class="card-subtitle">
-                    <p>Gondar, fasil </p>
-                    </p>
-
-                    <h3 class="h3 card-title">
-                      <span>gondar and fasil ghebbi</span>
-                    </h3>
-
-                    <p class="card-text">
-                      In the 16th and 17th centuries, the fortress-city of Fasil Ghebbi was the residence of the
-                      Ethiopian emperor Fasilides and his successors.
-                    </p>
-
-                  </div>
-
-                </div>
-              </RouterLink>
-
-              <RouterLink :to="{ name: 'PackageDetail' }">
-                <div class="popular-card">
-
-                  <figure class="card-img">
-                    <img :src="HararImage" loading="lazy">
-                  </figure>
-
-                  <div class="card-content">
-
-                    <div class="card-rating">
-                      <svg class="fill-white size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                        <path fill="#ffffff"
-                          d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                      </svg>
-                      <svg class="fill-white size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                        <path fill="#ffffff"
-                          d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                      </svg>
-                      <svg class="fill-white size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                        <path fill="#ffffff"
-                          d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                      </svg>
-                      <svg class="fill-white size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                        <path fill="#ffffff"
-                          d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                      </svg>
-                      <svg class="fill-white size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                        <path fill="#ffffff"
-                          d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                      </svg>
-                    </div>
-
-                    <p class="card-subtitle">
-                    <p>Harar Jugol</p>
-                    </p>
-
-                    <h3 class="h3 card-title">
-                      <span>Harar Jugol</span>
-                    </h3>
-
-                    <p class="card-text">
-                      The fortified historic town of Harar is located in the eastern part of the country on a plateau
-                      with deep gorges surrounded by deserts and savannah.
+                    <p class="h-[180px] overflow-y-hidden">
+                      {{ packageItem.package_description }}
                     </p>
 
                   </div>
@@ -342,62 +252,11 @@ const authStore = useAuthStore()
               </RouterLink>
 
 
-
-
-              <RouterLink :to="{ name: 'PackageDetail' }">
-
-                <div class="popular-card ">
-
-                  <figure class="card-img">
-                    <img :src="LalibelaImage" loading="lazy">
-                  </figure>
-
-                  <div class="card-content">
-
-                    <div class="card-rating">
-                      <svg class="fill-white size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                        <path fill="#ffffff"
-                          d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                      </svg>
-                      <svg class="fill-white size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                        <path fill="#ffffff"
-                          d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                      </svg>
-                      <svg class="fill-white size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                        <path fill="#ffffff"
-                          d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                      </svg>
-                      <svg class="fill-white size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                        <path fill="#ffffff"
-                          d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                      </svg>
-                      <svg class="fill-white size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                        <path fill="#ffffff"
-                          d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
-                      </svg>
-                    </div>
-
-                    <p class="card-subtitle">
-                    <p>Lalibela</p>
-                    </p>
-
-                    <h3 class="h3 card-title">
-                      <span>Lalibela</span>
-                    </h3>
-
-                    <p class="card-text">
-                      The 11 medieval monolithic cave churches of this 13th-century 'New Jerusalem' are situated in a
-                      mountainous region in the heart of Ethiopia near a traditional village with circular-shaped
-                      dwellings.
-                    </p>
-
-                  </div>
-
-                </div>
-              </RouterLink>
             </ul>
 
-            <button class="btn btn-primary navbar-link">More destintion</button>
+            <RouterLink :to="{ name: 'Packages' }">
+              <button class="btn btn-primary navbar-link">More destination</button>
+            </RouterLink>
             <br>
           </div>
         </section>

@@ -490,7 +490,7 @@ body { background: var(--white); }
   position: relative;
   overflow: hidden;
   border-radius: var(--radius-25);
-  height: 430px;
+  height: 480px;
 }
 
 .popular-card .card-img { height: 100%; }

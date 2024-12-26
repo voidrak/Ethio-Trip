@@ -63,7 +63,7 @@ const router = createRouter({
 
     },
     {
-      path: '/packages/id',
+      path: '/destination-detail',
       name: 'PackageDetail',
       component: PackageDetailPage,
 
