@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PackageController;
+use App\Http\Controllers\SubscriptionController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -11,11 +12,22 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
+
+
+
+
+Route::get('/packages', [PackageController::class, 'index']);
+
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/packages', [PackageController::class, 'index']);
     Route::get('/packages/{package}', [PackageController::class, 'show']);
     Route::post('/packages', [PackageController::class, 'store'])->middleware(AdminMiddleware::class);;
     Route::delete('/packages/{package}', [PackageController::class, 'destroy'])->middleware(AdminMiddleware::class);;
+});
+
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/subscriptions', [SubscriptionController::class, 'index']);
+    Route::post('/subscriptions', [SubscriptionController::class, 'store']);
 });
 
 

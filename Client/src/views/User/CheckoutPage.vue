@@ -4,11 +4,15 @@ import bannerImage from '/img/afar_3.jpg'
 import { usePackageStore } from '@/stores/package';
 import { useRoute } from 'vue-router';
 import { computed, onMounted, reactive, ref, watch } from 'vue';
+import { UseSubscriptionStore } from '@/stores/subscription';
+import { storeToRefs } from 'pinia';
 
 const route = useRoute()
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const { getPackage } = usePackageStore();
+const { createSubscription } = UseSubscriptionStore()
+const { errors } = storeToRefs(UseSubscriptionStore())
 
 const currentPackage = ref(null);
 const totalPerson = ref(1)
@@ -17,18 +21,25 @@ const totalPrice = computed(() => {
 });
 
 const formData = reactive({
-  package_id: currentPackage?.id,
-  person_amount: ''
+  package_id: '',
+  person_amount: totalPerson.value
 })
 
-watch(totalPerson, () => {
-  totalPrice.value = computed
+
+const submitSubscription = () => {
+  createSubscription(formData);
+}
+
+
+watch(totalPerson, (newPersonAmount) => {
+  formData.person_amount = newPersonAmount
+
 })
 
 
 onMounted(async () => {
   currentPackage.value = await getPackage(route.params.id);
-  console.log(currentPackage.value);
+  formData.package_id = currentPackage.value.id
 })
 
 
@@ -97,8 +108,8 @@ onMounted(async () => {
                   v-model="totalPerson" aria-roledescription="Number field" value="1" min="1" step="1">
               </div>
             </div>
-
           </div>
+          <p v-if="errors.person_amount" class="text-red-500 text-sm mt-3 ml-4">{{ errors.person_amount[0] }}</p>
         </div>
 
         <!-- End Input Number -->
@@ -120,7 +131,8 @@ onMounted(async () => {
           <p class="text-2xl font-semibold text-gray-900">{{ totalPrice }} Birr</p>
         </div>
       </div>
-      <button class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">Reserve Trip</button>
+      <button @click="submitSubscription"
+        class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">Reserve Trip</button>
     </div>
   </div>
 

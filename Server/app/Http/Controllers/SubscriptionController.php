@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subscription;
-use App\Http\Requests\StoreSubscriptionRequest;
-use App\Http\Requests\UpdateSubscriptionRequest;
+use Illuminate\Http\Request;
 
 class SubscriptionController extends Controller
 {
@@ -19,9 +18,14 @@ class SubscriptionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreSubscriptionRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'package_id' => 'required| exists:packages,id',
+            'person_amount' => 'required|integer',
+        ]);
+
+        return $request->user()->subscriptions()->create($validatedData);
     }
 
     /**
@@ -35,7 +39,7 @@ class SubscriptionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateSubscriptionRequest $request, Subscription $subscription)
+    public function update(Request $request, Subscription $subscription)
     {
         //
     }
