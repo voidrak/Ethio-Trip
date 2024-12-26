@@ -61,6 +61,7 @@ export const useDestinationStore = defineStore("destinationStore", {
         this.errors = data.errors;
       } else {
         this.errors = {};
+        router.push({ name: 'AdminDestination' })
 
 
       }

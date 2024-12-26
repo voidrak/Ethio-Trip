@@ -4,9 +4,11 @@ import { PhotoIcon } from '@heroicons/vue/24/solid'
 import AdminLayout from '@/layout/AdminLayout.vue';
 import { reactive, ref } from 'vue';
 import { useDestinationStore } from '@/stores/destination';
+import { storeToRefs } from 'pinia';
 
 
 const { createDestination } = useDestinationStore()
+const { errors } = storeToRefs(useDestinationStore())
 
 const formData = reactive({
   destination_title: '',
@@ -125,6 +127,8 @@ const submitForm = async () => {
                   autocomplete="given-name"
                   class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
               </div>
+              <p v-if="errors.destination_title" class="text-red-500 text-sm mt-3 ml-4">{{ errors.destination_title[0]
+                }}</p>
             </div>
 
             <div class="max-w-screen-md">
@@ -135,6 +139,9 @@ const submitForm = async () => {
                   id="destination_description" rows="3"
                   class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
               </div>
+              <p v-if="errors.destination_description" class="text-red-500 text-sm mt-3 ml-4">{{
+                errors.destination_description[0]
+              }}</p>
             </div>
 
 
@@ -149,6 +156,8 @@ const submitForm = async () => {
                   id="best_time_to_visit" autocomplete="best_time_to_visit"
                   class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
               </div>
+              <p v-if="errors.best_time_to_visit" class="text-red-500 text-sm mt-3 ml-4">{{ errors.best_time_to_visit[0]
+                }}</p>
             </div>
 
             <div class="max-w-screen-md">
@@ -164,6 +173,10 @@ const submitForm = async () => {
                   id="accommodation_option" autocomplete="address-level2"
                   class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
               </div>
+
+              <p v-if="errors.accommodation_option" class="text-red-500 text-sm mt-3 ml-4">{{
+                errors.accommodation_option[0]
+              }}</p>
             </div>
 
             <div class="max-w-screen-md">
@@ -177,6 +190,9 @@ const submitForm = async () => {
                   autocomplete="address-level1"
                   class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
               </div>
+
+              <p v-if="errors.place_to_visit" class="text-red-500 text-sm mt-3 ml-4">{{ errors.place_to_visit[0]
+                }}</p>
             </div>
 
 
@@ -190,6 +206,8 @@ const submitForm = async () => {
                   autocomplete="address-level1"
                   class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
               </div>
+              <p v-if="errors.tips_for_visitors" class="text-red-500 text-sm mt-3 ml-4">{{ errors.tips_for_visitors[0]
+                }}</p>
             </div>
           </div>
 
@@ -213,6 +231,8 @@ const submitForm = async () => {
                 </div>
               </div>
             </div>
+            <p v-if="errors.banner_image" class="text-red-500 text-sm mt-3 ml-4">{{ errors.banner_image[0]
+              }}</p>
           </div>
           <div class="mt-8  grid grid-cols-4 gap-4">
             <div class="">
@@ -235,6 +255,8 @@ const submitForm = async () => {
                   </div>
                 </div>
               </div>
+              <p v-if="errors.image_1" class="text-red-500 text-sm mt-3 ml-4">{{ errors.image_1[0]
+                }}</p>
             </div>
             <div class="">
               <label for="cover-photo" class="block text-sm/6 font-medium text-gray-900">Destination
@@ -256,6 +278,8 @@ const submitForm = async () => {
                   </div>
                 </div>
               </div>
+              <p v-if="errors.image_2" class="text-red-500 text-sm mt-3 ml-4">{{ errors.image_2[0]
+                }}</p>
             </div>
             <div class="">
               <label for="cover-photo" class="block text-sm/6 font-medium text-gray-900">Destination
@@ -277,6 +301,8 @@ const submitForm = async () => {
                   </div>
                 </div>
               </div>
+              <p v-if="errors.image_3" class="text-red-500 text-sm mt-3 ml-4">{{ errors.image_3[0]
+                }}</p>
             </div>
             <div class="">
               <label for="cover-photo" class="block text-sm/6 font-medium text-gray-900">Destination
@@ -298,6 +324,8 @@ const submitForm = async () => {
                   </div>
                 </div>
               </div>
+              <p v-if="errors.image_4" class="text-red-500 text-sm mt-3 ml-4">{{ errors.image_4[0]
+                }}</p>
             </div>
             <div class="">
               <label for="cover-photo" class="block text-sm/6 font-medium text-gray-900">Destination
@@ -319,6 +347,8 @@ const submitForm = async () => {
                   </div>
                 </div>
               </div>
+              <p v-if="errors.image_5" class="text-red-500 text-sm mt-3 ml-4">{{ errors.image_5[0]
+                }}</p>
             </div>
           </div>
 

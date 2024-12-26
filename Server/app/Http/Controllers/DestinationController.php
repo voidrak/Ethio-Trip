@@ -24,7 +24,7 @@ class DestinationController extends Controller
         $validatedData = $request->validate([
             'destination_title' => 'required|string|max:255',
             'destination_description' => 'required|string',
-            'best_time_to_visit' => 'required|string|max:255',
+            'best_time_to_visit' => 'required|string',
             'accommodation_option' => 'required|string',
             'place_to_visit' => 'required|string',
             'tips_for_visitors' => 'required|string',
