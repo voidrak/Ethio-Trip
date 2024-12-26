@@ -22,7 +22,6 @@ const packages = ref([]);
 
 onMounted(async () => {
   packages.value = await getAllPackages();
-  console.log(packages)
 })
 
 
@@ -135,6 +134,7 @@ onMounted(async () => {
 
 
               <RouterLink :to="{ name: 'Adventure' }" class="navbar-link" data-nav-link>Adventure</RouterLink>
+              <RouterLink :to="{ name: 'Destination' }" class="navbar-link" data-nav-link>Destination</RouterLink>
               <RouterLink :to="{ name: 'Packages' }" class="navbar-link" data-nav-link> Trip Book</RouterLink>
 
 

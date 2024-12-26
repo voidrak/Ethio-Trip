@@ -146,10 +146,6 @@ import addisImage5 from '/img/addis6.jpg'
       </article>
     </div>
 
-    <RouterLink :to="{ name: 'CheckoutPage' }"
-      class=" border-2  py-2 px-5 rounded-2xl text-xl w-[150px] mx-auto mt-8 flex items-center justify-center border-black hover:bg-green-500 hover:border-green-500 hover:text-white ease-linear duration-300 transition-all ">
-      Book Now
-    </RouterLink>
   </section>
 </template>
 

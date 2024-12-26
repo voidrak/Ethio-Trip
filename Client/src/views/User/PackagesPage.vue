@@ -417,10 +417,11 @@ body {
   background: var(--cultured);
   overflow: hidden;
   border-radius: 15px;
+  height: 450px;
 }
 
 .package-card .card-banner {
-  height: 250px;
+  height: 100%;
 }
 
 .package-card .card-banner img {

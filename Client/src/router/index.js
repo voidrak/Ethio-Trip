@@ -5,13 +5,14 @@ import AboutUs from '@/views/User/AboutUs.vue'
 import DestinationPage from '@/views/User/DestinationPage.vue'
 import AdventurePage from '@/views/User/AdventurePage.vue'
 import PackagesPage from '@/views/User/PackagesPage.vue'
-import PackageDetailPage from '@/views/User/PackageDetailPage.vue'
+import DestinationDetailPage from '@/views/User/DestinationDetailPage.vue'
 import CheckoutPage from '@/views/User/CheckoutPage.vue'
 import AdminHome from '@/views/Admin/AdminHome.vue'
 import LoginPage from '@/views/Auth/LoginPage.vue';
 import RegisterPage from '@/views/Auth/RegisterPage.vue';
 import CreatePackage from '@/views/Admin/CreatePackage.vue';
 import AdminPackagePage from '@/views/Admin/AdminPackagePage.vue';
+import CreateDestinationPage from '@/views/Admin/CreateDestinationPage.vue';
 
 
 const router = createRouter({
@@ -51,6 +52,13 @@ const router = createRouter({
 
     },
     {
+      path: '/destination-detail',
+      name: 'DestinationDetail',
+      component: DestinationDetailPage,
+
+
+    },
+    {
       path: '/adventure',
       name: 'Adventure',
       component: AdventurePage,
@@ -61,13 +69,6 @@ const router = createRouter({
       path: '/packages',
       name: 'Packages',
       component: PackagesPage,
-
-    },
-    {
-      path: '/destination-detail',
-      name: 'PackageDetail',
-      component: PackageDetailPage,
-
 
     },
     {
@@ -93,6 +94,12 @@ const router = createRouter({
       path: '/admin/packages',
       name: 'AdminPackages',
       component: AdminPackagePage,
+      meta: { admin: true },
+    },
+    {
+      path: '/admin/create-destination',
+      name: 'CreateDestination',
+      component: CreateDestinationPage,
       meta: { admin: true },
     },
 
