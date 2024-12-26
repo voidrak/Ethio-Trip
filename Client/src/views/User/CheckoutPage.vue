@@ -39,6 +39,7 @@ watch(totalPerson, (newPersonAmount) => {
 
 onMounted(async () => {
   currentPackage.value = await getPackage(route.params.id);
+  console.log(currentPackage.value);
   formData.package_id = currentPackage.value.id
 })
 
