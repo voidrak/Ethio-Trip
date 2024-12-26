@@ -70,7 +70,7 @@ const router = createRouter({
 
     },
     {
-      path: '/packages/id/checkout',
+      path: '/packages:id/checkout',
       name: 'CheckoutPage',
       component: CheckoutPage,
       meta: { auth: true },

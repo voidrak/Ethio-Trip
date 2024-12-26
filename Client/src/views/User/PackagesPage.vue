@@ -29,7 +29,8 @@ onMounted(async () => {
 
       <ul v-if="packages.length > 0" class="package-list space-y-8">
 
-        <div v-for="(packageItem, index) in packages" :key="index" class="package-card">
+        <div v-for="(packageItem, index) in packages" :key="index"
+          class="package-card shadow-md border border-gray-200">
 
           <figure class="card-banner">
             <img :src="`${baseUrl}/storage/${packageItem.package_image}`" :alt="`${packageItem.package_image}`"

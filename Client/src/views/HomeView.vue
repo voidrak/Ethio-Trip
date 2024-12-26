@@ -202,7 +202,8 @@ onMounted(async () => {
             </p>
 
             <ul class="popular-list">
-              <RouterLink v-for="(packageItem, index) in packages" :key="index" :to="{ name: 'PackageDetail' }">
+              <RouterLink v-for="(packageItem, index) in packages" :key="index"
+                :to="{ name: 'CheckoutPage', params: { id: packageItem.id } }">
                 <div class="popular-card">
 
                   <figure class="card-img">
