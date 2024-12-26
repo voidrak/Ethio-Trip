@@ -36,6 +36,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
 
+Route::get('/destinations', [DestinationController::class, 'index']);
 Route::get('/destinations/{destination}', [DestinationController::class, 'show']);
 Route::middleware('auth:sanctum')->group(function () {
 
