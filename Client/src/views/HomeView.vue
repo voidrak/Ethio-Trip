@@ -195,7 +195,7 @@ onMounted(async () => {
 
             <p class="section-subtitle">Uncover place</p>
 
-            <h2 class="h2 section-title">Popular destination</h2>
+            <h2 class="h2 section-title">Popular Packages</h2>
 
             <p class="section-text">
               Immerse yourself in the best part of ETHIOPIA.
@@ -210,7 +210,7 @@ onMounted(async () => {
                     <img :src="`${baseUrl}/storage/${packageItem.package_image}`" loading="lazy">
                   </figure>
 
-                  <div class="card-content">
+                  <div class="card-content h-[300px]">
 
                     <div class="card-rating">
                       <svg class="fill-white size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
@@ -256,7 +256,7 @@ onMounted(async () => {
             </ul>
 
             <RouterLink :to="{ name: 'Packages' }">
-              <button class="btn btn-primary navbar-link">More destination</button>
+              <button class="btn btn-primary navbar-link">More Packages</button>
             </RouterLink>
             <br>
           </div>

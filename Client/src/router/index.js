@@ -47,13 +47,13 @@ const router = createRouter({
       component: AboutUs,
     },
     {
-      path: '/destination',
+      path: '/destinations',
       name: 'Destination',
       component: DestinationPage,
 
     },
     {
-      path: '/destination-detail',
+      path: '/destinations/:id',
       name: 'DestinationDetail',
       component: DestinationDetailPage,
 
