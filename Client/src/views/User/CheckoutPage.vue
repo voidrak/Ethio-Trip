@@ -136,7 +136,8 @@ onMounted(async () => {
         </div>
       </div>
       <button @click="submitSubscription"
-        class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">Reserve Trip</button>
+        class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white"><a href="https://chapa.co/"
+          target="_blank" class="">Reserve Trip</a></button>
     </div>
   </div>
 
