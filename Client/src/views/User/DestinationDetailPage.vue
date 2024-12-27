@@ -6,6 +6,22 @@ import addisImage2 from '/img/addis3.jpg'
 import addisImage3 from '/img/addis4.jpg'
 import addisImage4 from '/img/addis5.jpg'
 import addisImage5 from '/img/addis6.jpg'
+import { useDestinationStore } from '@/stores/destination';
+import { useRoute } from 'vue-router';
+import { onMounted, ref } from 'vue';
+
+const route = useRoute();
+const baseUrl = import.meta.env.VITE_BASE_URL;
+
+const { getDestination } = useDestinationStore()
+
+const destination = ref();
+
+onMounted(async () => {
+  destination.value = await getDestination(route.params.id);
+  console.log(destination.value);
+})
+
 
 </script>
 
@@ -13,20 +29,21 @@ import addisImage5 from '/img/addis6.jpg'
   <UserHeader />
 
 
-  <div class="h-[400px] relative  bg-no-repeat  bg-center  ease-linear   bg-cover text-white  "
-    :style="`background-image:url(${bannerImage});`">
+  <div v-if="destination" class="h-[400px] relative  bg-no-repeat  bg-center  ease-linear   bg-cover text-white  "
+    :style="`background-image:url(${baseUrl}/storage/${destination?.banner_image});`">
     <div class="absolute top-0 left-0    h-full w-full bg-black/45 "></div>
   </div>
 
   <section class="light">
     <div class="container py-2">
-      <div class="text-center text-2xl text-gray-500 uppercase mb-8">Welcome To Addis Abeba Blog
+      <div class="text-center text-2xl text-gray-500 uppercase mb-8">Welcome To {{ destination?.destination_title }}
+        Blog
       </div>
 
 
       <article class="postcard light blue" id="">
         <a class="postcard__img_link">
-          <img class="postcard__img" :src="addisImage1" alt="Image Title" />
+          <img class="postcard__img" :src="`${baseUrl}/storage/${destination?.image_1}`" alt="Image Title" />
         </a>
         <div class="postcard__text t-dark ml-4" style="padding-right: 40px;">
           <h1 class="postcard__title blue uppercase"><a>Addis Ababa</a></h1>
@@ -36,18 +53,14 @@ import addisImage5 from '/img/addis6.jpg'
             </time>
           </div>
           <div class="postcard__bar"></div>
-          <div class="postcard__preview-txt">Addis Ababa, which means "New Flower" in Amharic, was founded in 1886 by
-            Emperor Menelik II and Empress Taytu Betul. Before Addis Ababa was chosen, Ethiopia's capital moved
-            frequently, reflecting the country's historically nomadic political structure. Menelik II selected the area
-            for its strategic location, fertile land, and access to thermal springs, particularly those at Filwoha,
-            which were favored by the empress.</div>
+          <div class="postcard__preview-txt">{{ destination?.destination_description }}.</div>
         </div>
       </article>
 
 
       <article class="postcard light blue" id="">
         <a class="postcard__img_link">
-          <img class="postcard__img" :src="addisImage2" alt="Image Title" />
+          <img class="postcard__img" :src="`${baseUrl}/storage/${destination?.image_2}`" alt="Image Title" />
         </a>
         <div class="postcard__text t-dark ml-4" style="padding-right: 40px;">
           <h1 class="postcard__title blue uppercase"><a>&nbsp;&nbsp;&nbsp;Best time to visit</a></h1>
@@ -58,9 +71,7 @@ import addisImage5 from '/img/addis6.jpg'
           </div>
           <div class="postcard__bar"></div>
           <div class="postcard__preview-txt">
-            &nbsp;The best time to visit Addis Ababa is during the dry season, which typically runs from October to
-            February. During these months, the weather is generally sunny, with mild to warm temperatures and low
-            humidity, making it ideal for sightseeing and outdoor activities. </div>
+            {{ destination?.best_time_to_visit }} </div>
 
         </div>
       </article>
@@ -69,7 +80,7 @@ import addisImage5 from '/img/addis6.jpg'
 
       <article class="postcard light blue" id="">
         <a class="postcard__img_link">
-          <img class="postcard__img" :src="addisImage3" alt="Image Title" />
+          <img class="postcard__img" :src="`${baseUrl}/storage/${destination?.image_3}`" alt="Image Title" />
         </a>
         <div class="postcard__text t-dark ml-4" style="padding-right: 40px;">
           <h1 class="postcard__title blue uppercase"><a>Accommodation option</a></h1>
@@ -79,42 +90,21 @@ import addisImage5 from '/img/addis6.jpg'
             </time>
           </div>
           <div class="postcard__bar"></div>
-          <div class="postcard__preview-txt">Addis Ababa offers a range of accommodation options that cater to different
-            budgets, from luxury hotels to budget-friendly guesthouses and unique homestays. Here are some options: <br>
-            1. Luxury Hotels ---Sheraton Addis, Hyatt Regency Addis Ababa, Skylight Hotel<br>
-            2. Mid-Range Hotels--- Radisson Blu Hotel Addis Ababa, Jupiter International Hotel, Momona Hote <br>
-            3. Budget-Friendly Hotels and Guesthouses--- Weygoss Guest House, Z Guest House, Mr. Martin's Cozy Place<br>
+          <div class="postcard__preview-txt">{{ destination?.accommodation_option }}<br>
           </div>
         </div>
       </article>
 
       <article class="postcard light blue" id="">
         <a class="postcard__img_link">
-          <img class="postcard__img" :src="addisImage4" alt="Image Title" />
+          <img class="postcard__img" :src="`${baseUrl}/storage/${destination?.image_4}`" alt="Image Title" />
         </a>
         <div class="postcard__text t-dark ml-4" style="padding-right: 40px;">
           <h1 class="postcard__title blue uppercase  "><a> places to visit</a></h1>
-          <div class="postcard__subtitle small">
-            <time class="" datetime="Sun, May 11th 2024 12:00:00">
-              <i class="fas fa-calendar-alt mr-2"></i>Sun, May 11th 2024
-            </time>
-          </div>
+
           <div class="postcard__bar"></div>
           <div class="postcard__preview-txt">
-            &nbsp; Addis Ababa has a rich blend of history, culture, and natural beauty. Here are some must-visit places
-            that capture the essence of the city and its surroundings:<br>
-            1. National Museum of Ethiopia<br>
-            2. Holy Trinity Cathedral<br>
-            3. Entoto Hills<br>
-            4. Merkato Market<br>
-            5. Ethnological Museum<br>
-            6. Meskel Square<br>
-            7. Red Terror Martyrs Memorial Museum<br>
-            8. Unity Park<br>
-            9. Mount Zuqualla and Bishoftu Crater Lakes<br>
-            10. The Zegie Peninsula and Monasteries of Lake Tana<br>
-            11. Addis Ababa Central Train Station<br>
-            12. African Union Headquarters<br>
+            {{ destination?.place_to_visit }}
           </div>
         </div>
       </article>
@@ -123,24 +113,13 @@ import addisImage5 from '/img/addis6.jpg'
 
       <article class="postcard light blue" id="">
         <a class="postcard__img_link">
-          <img class="postcard__img" :src="addisImage5" alt="Image Title" />
+          <img class="postcard__img" :src="`${baseUrl}/storage/${destination?.image_5}`" alt="Image Title" />
         </a>
         <div class="postcard__text t-dark ml-4" style="padding-right: 40px;">
           <h1 class="postcard__title blue uppercase"><a>Tips for Visitors</a></h1>
-          <div class="postcard__subtitle small">
-            <time datetime="Sun, May 11th 2024 12:00:00">
-              <i class="fas fa-calendar-alt mr-2"></i>Sun, May 11th 2024
-            </time>
-          </div>
+
           <div class="postcard__bar"></div>
-          <div class="postcard__preview-txt">Respect Local Customs<br>
-            Food and Water Safety<br>
-            Navigating Addis Ababa<br>
-            Currency and Payments<br>
-            Language<br>
-            Safety Precautions<br>
-            Cultural Etiquette in Homes and Restaurants<br>
-            Respect Sacred Sites<br>
+          <div class="postcard__preview-txt">{{ destination?.tips_for_visitors }}
           </div>
         </div>
       </article>
