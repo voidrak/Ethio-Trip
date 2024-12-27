@@ -1,10 +1,19 @@
 <script setup>
 import AdminLayout from '@/layout/AdminLayout.vue';
 import { usePackageStore } from '@/stores/package';
+import { UseSubscriptionStore } from '@/stores/subscription';
 import { computed, onMounted, ref } from 'vue';
 
 
+const { getAllSubscription } = UseSubscriptionStore()
 
+const subscriptions = ref([]);
+const searchQuery = ref("")
+
+onMounted(async () => {
+  subscriptions.value = await getAllSubscription();
+  console.log(subscriptions.value);
+})
 
 
 
@@ -13,7 +22,7 @@ import { computed, onMounted, ref } from 'vue';
 
 <template>
   <AdminLayout>
-    <div v-if="jobs" class="">
+    <div v-if="subscriptions" class="">
       <h1 class="text-center py-8 font-bold text-4xl">Open Job Vacancy
       </h1>
 
@@ -35,38 +44,41 @@ import { computed, onMounted, ref } from 'vue';
       <table class="min-w-full divide-y divide-gray-200 overflow-x-auto">
         <thead class="bg-gray-50">
           <tr>
-            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Job title
+            <th scope="col" class="px-6 py-3 text-left text-xs font-bold  uppercase tracking-wider">
+              User
             </th>
-            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Job location
+            <th scope="col" class="px-6 py-3 text-left text-xs font-bold  uppercase tracking-wider">
+              User Phone Number
             </th>
-            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Job type
+            <th scope="col" class="px-6 py-3 text-left text-xs font-bold  uppercase tracking-wider">
+              Package
             </th>
-            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Actions
+            <th scope="col" class="px-6 py-3 text-left text-xs font-bold  uppercase tracking-wider">
+              Number of Person
             </th>
           </tr>
         </thead>
         <tbody class="bg-white divide-y divide-gray-200">
-          <tr>
+          <tr v-for="(subscription, index) in subscriptions" :key="index">
             <td class="px-6 py-4 whitespace-nowrap">
               <div class="flex items-center">
 
                 <div class="ml-4">
                   <div class="text-sm font-medium text-gray-900">
-                    job.title
+                    {{ subscription.user.name }}
                   </div>
                 </div>
               </div>
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
-              <div class="text-sm text-gray-900"> job.location </div>
+              <div class="text-sm text-gray-900">{{ subscription.user.phone_number }} </div>
 
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
-              job.type
+              {{ subscription.package.package_name }}
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              {{ subscription.person_amount }}
             </td>
             <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium">
               <a href="#" class="ml-2 text-red-600 hover:text-red-900">Delete</a>

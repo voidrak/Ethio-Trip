@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Package;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class SubscriptionController extends Controller
      */
     public function index()
     {
-        //
+        return  Subscription::latest()->with(['user', 'package'])->get();
     }
 
     /**
@@ -21,11 +22,23 @@ class SubscriptionController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'package_id' => 'required| exists:packages,id',
+            'package_id' => 'required|exists:packages,id',
             'person_amount' => 'required|integer',
         ]);
 
-        return $request->user()->subscriptions()->create($validatedData);
+        $package = Package::findOrFail($validatedData['package_id']);
+
+        if ($validatedData['person_amount'] > $package->available_space) {
+            return response()->json(['errors' => ['person_amount' => ['Not enough available space for the requested number of persons']]], 400);
+        }
+
+        // Decrease the available space
+        $package->available_space -= $validatedData['person_amount'];
+        $package->save();
+
+        $subscription = $request->user()->subscriptions()->create($validatedData);
+
+        return response()->json(['message' => 'Subscription created successfully', 'subscription' => $subscription], 201);
     }
 
     /**

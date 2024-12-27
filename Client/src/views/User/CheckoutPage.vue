@@ -27,6 +27,7 @@ const formData = reactive({
 
 
 const submitSubscription = () => {
+
   createSubscription(formData);
 }
 
@@ -96,6 +97,8 @@ onMounted(async () => {
           </p>
 
           <p class="text flex gap-x-2"> Location : <span class="font-bold">{{ currentPackage?.location }}</span> </p>
+          <p class="text flex gap-x-2"> Available space : <span class="font-bold">{{ currentPackage?.available_space
+              }}</span> </p>
         </div>
 
 

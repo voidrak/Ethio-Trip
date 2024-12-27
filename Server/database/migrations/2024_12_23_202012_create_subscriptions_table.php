@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId("user_id")->constrained("users")->onDelete("cascade");
             $table->foreignId("package_id")->constrained("packages")->onDelete("cascade");
             $table->string("person_amount");
+            $table->boolean('is_paid')->default(false);
             $table->timestamps();
         });
     }
