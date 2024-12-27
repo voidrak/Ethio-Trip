@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('image_3');
             $table->string('image_4');
             $table->string('image_5');
+            $table->string("map_link");
             $table->timestamps();
         });
     }
