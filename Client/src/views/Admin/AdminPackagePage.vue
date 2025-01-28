@@ -4,6 +4,7 @@ import AdminLayout from '@/layout/AdminLayout.vue';
 import { usePackageStore } from '@/stores/package';
 import { computed, onMounted, ref } from 'vue';
 
+const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const { getAllPackages } = usePackageStore()
 
@@ -11,7 +12,7 @@ const packages = ref([]);
 
 onMounted(async () => {
   packages.value = await getAllPackages();
-
+  console.log(packages.value);
 })
 </script>
 
@@ -23,12 +24,12 @@ onMounted(async () => {
           <h2 class="h2 section-title"> Packages</h2>
         </div>
 
-        <ul v-if="packages.length > 0" class="package-list space-y-8">
+        <ul v-if="packages" class="package-list space-y-8">
 
           <div v-for="(packageItem, index) in packages" :key="index" class="package-card">
 
             <figure class="card-banner">
-              <img src="https://storage.googleapis.com/prune/blog_image/Golden-tringle.jpg" alt="Golden Triangle Tour"
+              <img :src="`${baseUrl}/storage/${packageItem.package_image}`" class="h-full" alt="Golden Triangle Tour"
                 loading="lazy">
             </figure>
 
@@ -132,7 +133,7 @@ onMounted(async () => {
                 {{ packageItem.price }} Br
                 <span class="text-black font-bold">/ per person</span>
               </p>
-              <RouterLink :to="{ name: 'CheckoutPage' }">
+              <RouterLink :to="{ name: 'CheckoutPage', params: { id: packageItem.id } }">
                 <button class="btn btn-secondary">Update</button>
               </RouterLink>
             </div>
@@ -413,6 +414,8 @@ body {
   background: var(--cultured);
   overflow: hidden;
   border-radius: 15px;
+  max-height: 450px;
+  min-height: 450px;
 }
 
 .package-card .card-banner {
