@@ -46,11 +46,8 @@ onMounted(async () => {
           <img class="postcard__img" :src="`${baseUrl}/storage/${destination?.image_1}`" alt="Image Title" />
         </a>
         <div class="postcard__text t-dark ml-4" style="padding-right: 40px;">
-          <h1 class="postcard__title blue uppercase"><a>Addis Ababa</a></h1>
+          <h1 class="postcard__title blue uppercase"><a>{{ destination?.destination_title }}</a></h1>
           <div class="postcard__subtitle small">
-            <time datetime="Sun, May 11th 2024 12:00:00">
-              <i class="fas fa-calendar-alt mr-2"></i>Sun, nov 11th 2024
-            </time>
           </div>
           <div class="postcard__bar"></div>
           <div class="postcard__preview-txt">{{ destination?.destination_description }}.</div>
@@ -65,9 +62,7 @@ onMounted(async () => {
         <div class="postcard__text t-dark ml-4" style="padding-right: 40px;">
           <h1 class="postcard__title blue uppercase"><a>&nbsp;&nbsp;&nbsp;Best time to visit</a></h1>
           <div class="postcard__subtitle small">
-            <time datetime="Sun, nov 11th 2024 12:00:00">
-              <i class="fas fa-calendar-alt mr-2"></i>Sun, nov 11th 2024
-            </time>
+
           </div>
           <div class="postcard__bar"></div>
           <div class="postcard__preview-txt">
@@ -85,9 +80,7 @@ onMounted(async () => {
         <div class="postcard__text t-dark ml-4" style="padding-right: 40px;">
           <h1 class="postcard__title blue uppercase"><a>Accommodation option</a></h1>
           <div class="postcard__subtitle small">
-            <time datetime="Sun, May 11th 2024 12:00:00">
-              <i class="fas fa-calendar-alt mr-2"></i>Sun, May 11th 2024
-            </time>
+
           </div>
           <div class="postcard__bar"></div>
           <div class="postcard__preview-txt">{{ destination?.accommodation_option }}<br>
