@@ -51,7 +51,10 @@ onMounted(async () => {
           </div>
           <div class="postcard__bar"></div>
           <div class="postcard__preview-txt">{{ destination?.destination_description }}.</div>
+          <div class="px-4 py-2 bg-[#0076bd] w-[100px] text-center rounded-md text-white"> <a
+              :href="destination?.map_link" target="_blank">Map</a></div>
         </div>
+
       </article>
 
 
