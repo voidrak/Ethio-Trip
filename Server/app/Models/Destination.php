@@ -19,6 +19,7 @@ class Destination extends Model
         'image_5',
         'destination_title',
         'destination_description',
+        'map_link',
         'best_time_to_visit',
         'accommodation_option',
         'place_to_visit',

@@ -23,7 +23,7 @@ onMounted(async () => {
 <template>
   <AdminLayout>
     <div v-if="subscriptions" class="">
-      <h1 class="text-center py-8 font-bold text-4xl">Open Job Vacancy
+      <h1 class="text-center py-8 font-bold text-4xl text-blue-700">Users
       </h1>
 
       <div class="pt-2 relative pl-6 py-4 max-w-screen-md  text-gray-600">

@@ -93,6 +93,7 @@ const submitForm = async () => {
   const form = new FormData();
   form.append('destination_title', formData.destination_title);
   form.append('destination_description', formData.destination_description);
+  form.append('map_link', formData.map_link);
   form.append('best_time_to_visit', formData.best_time_to_visit);
   form.append('accommodation_option', formData.accommodation_option);
   form.append('place_to_visit', formData.place_to_visit);
@@ -141,6 +142,17 @@ const submitForm = async () => {
               </div>
               <p v-if="errors.destination_description" class="text-red-500 text-sm mt-3 ml-4">{{
                 errors.destination_description[0]
+              }}</p>
+            </div>
+            <div class="max-w-screen-md">
+              <label for="map_link" class="block text-sm/6 font-medium text-gray-900">Map Link</label>
+              <p class="mt-3 text-sm/6 text-gray-600 flex gap-x-2">Google Map Link.</p>
+              <div class="mt-2">
+                <textarea v-model="formData.map_link" name="map_link" id="map_link" rows="3"
+                  class="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
+              </div>
+              <p v-if="errors.map_link" class="text-red-500 text-sm mt-3 ml-4">{{
+                errors.map_link[0]
               }}</p>
             </div>
 
