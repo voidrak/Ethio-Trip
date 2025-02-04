@@ -19,7 +19,7 @@ onMounted(async () => {
 <template>
 
   <UserHeader />
-  <section class="">
+  <section class="overflow-hidden pb-16">
     <div class="my-8 ">
       <div class="  text-center ">
         <h1 class="font-bold text-3xl my-1">Best Places to visit in Ethiopia</h1>

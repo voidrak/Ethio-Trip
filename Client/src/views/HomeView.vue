@@ -41,19 +41,19 @@ onMounted(async () => {
 
       <div class="header-top">
         <div class="container">
-          <p class="#">
+          <div class="#">
 
-          <div class="">
+            <div class="">
+
+            </div>
+
+            <div class="wrapper">
+              <p class="helpline-title"></p>
+
+              <p class="helpline-number"></p>
+            </div>
 
           </div>
-
-          <div class="wrapper">
-            <p class="helpline-title"></p>
-
-            <p class="helpline-number"></p>
-          </div>
-
-          </p>
 
 
           <a href="index.html" class="logo">
@@ -235,9 +235,9 @@ onMounted(async () => {
                       </svg>
                     </div>
 
-                    <p class="card-subtitle">
-                    <p>{{ packageItem.location }} </p>
-                    </p>
+                    <div class="card-subtitle">
+                      <p>{{ packageItem.location }} </p>
+                    </div>
 
                     <h3 class="h3 card-title">
                       <span>{{ packageItem.package_name }}</span>

@@ -67,7 +67,19 @@ class PackageController extends Controller
      */
     public function update(Request $request, Package $package)
     {
-        //
+
+        $validatedData = $request->validate([
+            'package_name' => 'required|string|max:255',
+            'package_description' => 'required|string',
+            'duration' => 'required|string',
+            'price' => 'required|numeric',
+            'available_space' => 'required|integer',
+            'food' => 'required|boolean',
+            'bus' => 'required|boolean',
+            'accommodation' => 'required|boolean',
+        ]);
+
+        return $package->update($validatedData);
     }
 
     /**

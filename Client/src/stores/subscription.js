@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import router from "@/router";
+import { data } from "autoprefixer";
 
 export const UseSubscriptionStore = defineStore('subscriptionStore', {
   state: () => {
@@ -51,6 +52,24 @@ export const UseSubscriptionStore = defineStore('subscriptionStore', {
 
       }
     },
+
+    async deleteSubscription(subscription) {
+      const res = await fetch(`api/subscriptions/${subscription}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "application/json",
+        }
+
+      })
+      const data = await res.json();
+      console.log(data);
+      if (data.errors) {
+        this.errors = data.errors
+      } else {
+        this.errors = {}
+      }
+    }
 
 
 
