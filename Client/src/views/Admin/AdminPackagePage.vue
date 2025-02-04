@@ -448,7 +448,7 @@ body {
   min-height: 400px;
 }
 
-.package-card .card-banner {
+.package-card {
   height: 250px;
 }
 
