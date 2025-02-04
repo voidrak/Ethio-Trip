@@ -42,7 +42,7 @@ onMounted(async () => {
               <h1 class="text-xl uppercase ">{{ destination.destination_title }}</h1>
             </div>
 
-            <RouterLink :to="{ name: 'DestinationDetail', params: { id: destination.id } }">
+            <RouterLink :to="{ name: 'AdminDestinationDetail', params: { id: destination.id } }">
               <p
                 class=" ml-6 max-w-[150px]  cursor-pointer border-2 border-gray-300 py-2  text-center hover:bg-blue-500 hover:border-blue-500 hover:text-white px-4 rounded-xl">
                 Know More!!</p>

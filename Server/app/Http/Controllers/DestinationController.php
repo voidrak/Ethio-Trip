@@ -74,7 +74,17 @@ class DestinationController extends Controller
      */
     public function update(Request $request, Destination $destination)
     {
-        //
+        $validatedData = $request->validate([
+            'destination_title' => 'required|string|max:255',
+            'destination_description' => 'required|string',
+            'map_link' => 'required|string',
+            'best_time_to_visit' => 'required|string',
+            'accommodation_option' => 'required|string',
+            'place_to_visit' => 'required|string',
+            'tips_for_visitors' => 'required|string',
+        ]);
+
+        return $destination->update($validatedData);
     }
 
     /**

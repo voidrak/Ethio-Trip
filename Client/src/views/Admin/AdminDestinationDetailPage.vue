@@ -3,121 +3,148 @@ import UserHeader from '@/components/User/UserHeader.vue';
 import { useDestinationStore } from '@/stores/destination';
 import { useRoute } from 'vue-router';
 import { onMounted, ref } from 'vue';
+import AdminLayout from '@/layout/AdminLayout.vue';
+import EditDestinationModal from '@/components/Admin/EditDestinationModal.vue';
 
 const route = useRoute();
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const { getDestination } = useDestinationStore()
 
+const isEditDestinationOpen = ref(false);
+const selectedDestination = ref(null)
+
 const destination = ref();
 
 onMounted(async () => {
   destination.value = await getDestination(route.params.id);
-  console.log(destination.value);
+  // console.log(destination.value);
 })
+
+
+function openEditDestinationModal(destination) {
+  isEditDestinationOpen.value = true
+  selectedDestination.value = destination
+
+}
+function closeEditDestinationModal() {
+  isEditDestinationOpen.value = false
+  selectedDestination.value = null
+
+}
+
+const handleUpdate = async () => {
+  destination.value = await getDestination(route.params.id);
+
+
+}
 
 
 </script>
 
 <template>
-  <UserHeader />
-
-
-  <div v-if="destination" class="h-[400px] relative  bg-no-repeat  bg-center  ease-linear   bg-cover text-white  "
-    :style="`background-image:url(${baseUrl}/storage/${destination?.banner_image});`">
-    <div class="absolute top-0 left-0    h-full w-full bg-black/45 "></div>
-  </div>
-
-  <section class="light">
-    <div class="container py-2">
-      <div class="text-center text-2xl text-gray-500 uppercase mb-8">Welcome To {{ destination?.destination_title }}
-        Blog
-      </div>
-
-
-      <article class="postcard light blue" id="">
-        <a class="postcard__img_link">
-          <img class="postcard__img" :src="`${baseUrl}/storage/${destination?.image_1}`" alt="Image Title" />
-        </a>
-        <div class="postcard__text t-dark ml-4" style="padding-right: 40px;">
-          <h1 class="postcard__title blue uppercase"><a>{{ destination?.destination_title }}</a></h1>
-          <div class="postcard__subtitle small">
-          </div>
-          <div class="postcard__bar"></div>
-          <div class="postcard__preview-txt">{{ destination?.destination_description }}.</div>
-          <div
-            class=" border-2 w-[200px]  py-2 px-5 rounded-2xl text-xl flex items-center justify-center border-black hover:bg-[#3b79c9] hover:text-white">
-            <a :href="destination?.map_link" target="_blank">Direction</a>
-          </div>
-        </div>
-
-      </article>
-
-
-      <article class="postcard light blue" id="">
-        <a class="postcard__img_link">
-          <img class="postcard__img" :src="`${baseUrl}/storage/${destination?.image_2}`" alt="Image Title" />
-        </a>
-        <div class="postcard__text t-dark ml-4" style="padding-right: 40px;">
-          <h1 class="postcard__title blue uppercase"><a>&nbsp;&nbsp;&nbsp;Best time to visit</a></h1>
-          <div class="postcard__subtitle small">
-
-          </div>
-          <div class="postcard__bar"></div>
-          <div class="postcard__preview-txt">
-            {{ destination?.best_time_to_visit }} </div>
-
-        </div>
-      </article>
-
-
-
-      <article class="postcard light blue" id="">
-        <a class="postcard__img_link">
-          <img class="postcard__img" :src="`${baseUrl}/storage/${destination?.image_3}`" alt="Image Title" />
-        </a>
-        <div class="postcard__text t-dark ml-4" style="padding-right: 40px;">
-          <h1 class="postcard__title blue uppercase"><a>Accommodation option</a></h1>
-          <div class="postcard__subtitle small">
-
-          </div>
-          <div class="postcard__bar"></div>
-          <div class="postcard__preview-txt">{{ destination?.accommodation_option }}<br>
-          </div>
-        </div>
-      </article>
-
-      <article class="postcard light blue" id="">
-        <a class="postcard__img_link">
-          <img class="postcard__img" :src="`${baseUrl}/storage/${destination?.image_4}`" alt="Image Title" />
-        </a>
-        <div class="postcard__text t-dark ml-4" style="padding-right: 40px;">
-          <h1 class="postcard__title blue uppercase  "><a> places to visit</a></h1>
-
-          <div class="postcard__bar"></div>
-          <div class="postcard__preview-txt">
-            {{ destination?.place_to_visit }}
-          </div>
-        </div>
-      </article>
-
-
-
-      <article class="postcard light blue" id="">
-        <a class="postcard__img_link">
-          <img class="postcard__img" :src="`${baseUrl}/storage/${destination?.image_5}`" alt="Image Title" />
-        </a>
-        <div class="postcard__text t-dark ml-4" style="padding-right: 40px;">
-          <h1 class="postcard__title blue uppercase"><a>Tips for Visitors</a></h1>
-
-          <div class="postcard__bar"></div>
-          <div class="postcard__preview-txt">{{ destination?.tips_for_visitors }}
-          </div>
-        </div>
-      </article>
+  <AdminLayout>
+    <EditDestinationModal @closeEditDestinationModal="closeEditDestinationModal"
+      :isEditDestinationOpen="isEditDestinationOpen" :selectedDestination="selectedDestination"
+      @handleUpdate="handleUpdate" />
+    <div v-if="destination" class="h-[400px] relative  bg-no-repeat  bg-center  ease-linear   bg-cover text-white  "
+      :style="`background-image:url(${baseUrl}/storage/${destination?.banner_image});`">
+      <div class="absolute top-0 left-0    h-full w-full bg-black/45 "></div>
     </div>
 
-  </section>
+    <section class="light">
+      <div class="container py-2">
+
+        <div class="w-full">
+          <div @click.prevent="openEditDestinationModal(destination)" class="mx-auto">
+            <button class="mb-8 bg-[#0076bd] px-3 py-2 rounded-md text-white">Update Destination</button>
+          </div>
+        </div>
+
+        <article class="postcard light blue" id="">
+          <a class="postcard__img_link">
+            <img class="postcard__img" :src="`${baseUrl}/storage/${destination?.image_1}`" alt="Image Title" />
+          </a>
+          <div class="postcard__text t-dark ml-4" style="padding-right: 40px;">
+            <h1 class="postcard__title blue uppercase"><a>{{ destination?.destination_title }}</a></h1>
+            <div class="postcard__subtitle small">
+            </div>
+            <div class="postcard__bar"></div>
+            <div class="postcard__preview-txt">{{ destination?.destination_description }}.</div>
+            <div
+              class=" border-2 w-[200px]  py-2 px-5 rounded-2xl text-xl flex items-center justify-center border-black hover:bg-[#3b79c9] hover:text-white">
+              <a :href="destination?.map_link" target="_blank">Direction</a>
+            </div>
+          </div>
+
+        </article>
+
+
+        <article class="postcard light blue" id="">
+          <a class="postcard__img_link">
+            <img class="postcard__img" :src="`${baseUrl}/storage/${destination?.image_2}`" alt="Image Title" />
+          </a>
+          <div class="postcard__text t-dark ml-4" style="padding-right: 40px;">
+            <h1 class="postcard__title blue uppercase"><a>&nbsp;&nbsp;&nbsp;Best time to visit</a></h1>
+            <div class="postcard__subtitle small">
+
+            </div>
+            <div class="postcard__bar"></div>
+            <div class="postcard__preview-txt">
+              {{ destination?.best_time_to_visit }} </div>
+
+          </div>
+        </article>
+
+
+
+        <article class="postcard light blue" id="">
+          <a class="postcard__img_link">
+            <img class="postcard__img" :src="`${baseUrl}/storage/${destination?.image_3}`" alt="Image Title" />
+          </a>
+          <div class="postcard__text t-dark ml-4" style="padding-right: 40px;">
+            <h1 class="postcard__title blue uppercase"><a>Accommodation option</a></h1>
+            <div class="postcard__subtitle small">
+
+            </div>
+            <div class="postcard__bar"></div>
+            <div class="postcard__preview-txt">{{ destination?.accommodation_option }}<br>
+            </div>
+          </div>
+        </article>
+
+        <article class="postcard light blue" id="">
+          <a class="postcard__img_link">
+            <img class="postcard__img" :src="`${baseUrl}/storage/${destination?.image_4}`" alt="Image Title" />
+          </a>
+          <div class="postcard__text t-dark ml-4" style="padding-right: 40px;">
+            <h1 class="postcard__title blue uppercase  "><a> places to visit</a></h1>
+
+            <div class="postcard__bar"></div>
+            <div class="postcard__preview-txt">
+              {{ destination?.place_to_visit }}
+            </div>
+          </div>
+        </article>
+
+
+
+        <article class="postcard light blue" id="">
+          <a class="postcard__img_link">
+            <img class="postcard__img" :src="`${baseUrl}/storage/${destination?.image_5}`" alt="Image Title" />
+          </a>
+          <div class="postcard__text t-dark ml-4" style="padding-right: 40px;">
+            <h1 class="postcard__title blue uppercase"><a>Tips for Visitors</a></h1>
+
+            <div class="postcard__bar"></div>
+            <div class="postcard__preview-txt">{{ destination?.tips_for_visitors }}
+            </div>
+          </div>
+        </article>
+      </div>
+
+    </section>
+  </AdminLayout>
 </template>
 
 

@@ -14,6 +14,7 @@ import CreatePackage from '@/views/Admin/CreatePackage.vue';
 import AdminPackagePage from '@/views/Admin/AdminPackagePage.vue';
 import CreateDestinationPage from '@/views/Admin/CreateDestinationPage.vue';
 import AdminDestination from '@/views/Admin/AdminDestination.vue';
+import AdminDestinationDetailPage from '@/views/Admin/AdminDestinationDetailPage.vue';
 
 
 const router = createRouter({
@@ -56,7 +57,6 @@ const router = createRouter({
       path: '/destinations/:id',
       name: 'DestinationDetail',
       component: DestinationDetailPage,
-
 
     },
     {
@@ -102,6 +102,12 @@ const router = createRouter({
       name: 'AdminDestination',
       component: AdminDestination,
       meta: { admin: true },
+    },
+    {
+      path: '/admin/destination/:id',
+      name: "AdminDestinationDetail",
+      component: AdminDestinationDetailPage,
+      meta: { admin: true }
     },
     {
       path: '/admin/create-destination',

@@ -43,6 +43,7 @@ Route::get('/destinations/{destination}', [DestinationController::class, 'show']
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/destinations', [DestinationController::class, 'store'])->middleware(AdminMiddleware::class);;
+    Route::put('/destinations/{destination}', [DestinationController::class, 'update'])->middleware(AdminMiddleware::class);;
     Route::delete('/destinations/{destination}', [DestinationController::class, 'destroy'])->middleware(AdminMiddleware::class);;
 });
 
