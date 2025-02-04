@@ -172,7 +172,7 @@ onMounted(async () => {
             </p>
 
             <div class="btn-group">
-              <RouterLink :to="PackagesPage"
+              <RouterLink :to="{ name: 'Packages' }"
                 class="text-white px-4 py-3 hover:border-blue-700 hover:border-2  border border-gray-300 rounded-2xl">
                 Trip
                 Packages

@@ -17,7 +17,7 @@ onMounted(async () => {
 
 <template>
   <UserHeader />
-  <section class="package  flex justify-center" id="package">
+  <section class="   flex justify-center" id="package">
     <div class=" max-w-[1180px] mx-auto">
       <div class="">
         <h2 class="h2 section-title">Checkout Our Packages</h2>
@@ -34,7 +34,7 @@ onMounted(async () => {
 
           <figure class="card-banner">
             <img :src="`${baseUrl}/storage/${packageItem.package_image}`" :alt="`${packageItem.package_image}`"
-              loading="lazy">
+              class="h-[400px] w-full" loading="lazy">
           </figure>
 
           <div class="card-content">
@@ -400,7 +400,6 @@ body {
 /*-----------------------------------*\
 * #PACKAGE
 \*-----------------------------------*/
-
 .package {
   padding-block: var(--section-padding);
 }
@@ -417,16 +416,16 @@ body {
   background: var(--cultured);
   overflow: hidden;
   border-radius: 15px;
-  height: 450px;
+  max-height: 400px;
+  min-height: 400px;
 }
 
 .package-card .card-banner {
-  height: 100%;
+  height: 20px;
 }
 
 .package-card .card-banner img {
-  width: 100%;
-  height: 100%;
+
   object-fit: cover;
 }
 
@@ -570,6 +569,7 @@ body {
 
 
 
+
 /*-----------------------------------*\
 * #MEDIA QUERIES
 \*-----------------------------------*/
@@ -674,6 +674,8 @@ body {
   .package-card {
     display: grid;
     grid-template-columns: 1.3fr 1.5fr 1fr;
+    max-height: 400px;
+    min-height: 400px;
   }
 
   .package-card .card-banner {
