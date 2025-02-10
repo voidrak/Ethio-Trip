@@ -1,5 +1,6 @@
 <script setup>
 
+import EditPackageModal from '@/components/Admin/EditPackageModal.vue';
 import AdminLayout from '@/layout/AdminLayout.vue';
 import { usePackageStore } from '@/stores/package';
 import { computed, onMounted, ref } from 'vue';
@@ -9,15 +10,44 @@ const baseUrl = import.meta.env.VITE_BASE_URL;
 const { getAllPackages } = usePackageStore()
 
 const packages = ref([]);
+const isEditPackageOpen = ref(false);
+
+
+const selectedPackage = ref(null)
+
+
+
+
 
 onMounted(async () => {
   packages.value = await getAllPackages();
   console.log(packages.value);
 })
+
+function openEditPackageModal(packageItem) {
+  isEditPackageOpen.value = true
+  selectedPackage.value = packageItem
+
+}
+function closeEditPackageModal() {
+  isEditPackageOpen.value = false
+  selectedPackage.value = null
+
+}
+
+const handleUpdate = async () => {
+  packages.value = await getAllPackages();
+
+}
+
 </script>
 
 <template>
   <AdminLayout>
+
+    <EditPackageModal @closeEditPackageModal="closeEditPackageModal" :isEditPackageOpen="isEditPackageOpen"
+      :selectedPackage="selectedPackage" @handleUpdate="handleUpdate" />
+
     <section class="  mt-4 flex justify-center" id="package">
       <div class=" max-w-[1180px] mx-auto">
         <div class="">
@@ -133,9 +163,9 @@ onMounted(async () => {
                 {{ packageItem.price }} Br
                 <span class="text-black font-bold">/ per person</span>
               </p>
-              <RouterLink :to="{ name: 'CheckoutPage', params: { id: packageItem.id } }">
+              <div @click.prevent="openEditPackageModal(packageItem)" class="mx-auto">
                 <button class="btn btn-secondary">Update</button>
-              </RouterLink>
+              </div>
             </div>
           </div>
 
@@ -414,11 +444,11 @@ body {
   background: var(--cultured);
   overflow: hidden;
   border-radius: 15px;
-  max-height: 450px;
-  min-height: 450px;
+  max-height: 400px;
+  min-height: 400px;
 }
 
-.package-card .card-banner {
+.package-card {
   height: 250px;
 }
 
@@ -675,7 +705,7 @@ body {
   }
 
   .package-card .card-banner {
-    height: 100%;
+    height: 400px;
   }
 
   .package-card .card-content {

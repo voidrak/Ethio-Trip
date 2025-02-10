@@ -1,11 +1,11 @@
 <script setup>
 import AdminLayout from '@/layout/AdminLayout.vue';
-import { usePackageStore } from '@/stores/package';
 import { UseSubscriptionStore } from '@/stores/subscription';
-import { computed, onMounted, ref } from 'vue';
+import { onMounted, ref } from 'vue';
 
 
 const { getAllSubscription } = UseSubscriptionStore()
+const { deleteSubscription } = UseSubscriptionStore()
 
 const subscriptions = ref([]);
 const searchQuery = ref("")
@@ -15,6 +15,12 @@ onMounted(async () => {
   console.log(subscriptions.value);
 })
 
+const handleDelete = async (subscription) => {
+  deleteSubscription(subscription);
+  subscriptions.value = await getAllSubscription();
+
+}
+
 
 
 
@@ -23,7 +29,7 @@ onMounted(async () => {
 <template>
   <AdminLayout>
     <div v-if="subscriptions" class="">
-      <h1 class="text-center py-8 font-bold text-4xl">Open Job Vacancy
+      <h1 class="text-center py-8 font-bold text-4xl text-blue-700">Package Subscriptions
       </h1>
 
       <div class="pt-2 relative pl-6 py-4 max-w-screen-md  text-gray-600">
@@ -45,7 +51,7 @@ onMounted(async () => {
 
       <table class="min-w-full divide-y divide-gray-200 overflow-x-auto">
         <thead class="bg-gray-50">
-          <tr>
+          <tr class="">
             <th scope="col" class="px-6 py-3 text-left text-xs font-bold  uppercase tracking-wider">
               User
             </th>
@@ -55,8 +61,11 @@ onMounted(async () => {
             <th scope="col" class="px-6 py-3 text-left text-xs font-bold  uppercase tracking-wider">
               Package
             </th>
-            <th scope="col" class="px-6 py-3 text-left text-xs font-bold  uppercase tracking-wider">
+            <th scope="col" class="px-6 py-3 text-left text-xs font-bold  uppercase tracking-wider text-center">
               Number of Person
+            </th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-bold  uppercase tracking-wider">
+              Action
             </th>
           </tr>
         </thead>
@@ -79,11 +88,13 @@ onMounted(async () => {
             <td class="px-6 py-4 whitespace-nowrap">
               {{ subscription.package.package_name }}
             </td>
-            <td class="px-6 py-4 whitespace-nowrap">
+            <td class="px-6 py-4 whitespace-nowrap text-center">
               {{ subscription.person_amount }}
             </td>
-            <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium">
-              <a href="#" class="ml-2 text-red-600 hover:text-red-900">Delete</a>
+            <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium flex">
+              <button @click.prevent="handleDelete(subscription.id)"
+                class="ml-2 bg-red-500 text-white hover:bg-red-600  px-1 rounded-md py-[5px] ">Delete</button>
+              <!-- <button class="ml-2 bg-green-500 text-white hover:bg-green-600  px-1 rounded-md py-[5px] ">Update</button> -->
             </td>
           </tr>
 

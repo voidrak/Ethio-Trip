@@ -41,19 +41,19 @@ onMounted(async () => {
 
       <div class="header-top">
         <div class="container">
-          <p class="#">
+          <div class="#">
 
-          <div class="">
+            <div class="">
+
+            </div>
+
+            <div class="wrapper">
+              <p class="helpline-title"></p>
+
+              <p class="helpline-number"></p>
+            </div>
 
           </div>
-
-          <div class="wrapper">
-            <p class="helpline-title"></p>
-
-            <p class="helpline-number"></p>
-          </div>
-
-          </p>
 
 
           <a href="index.html" class="logo">
@@ -172,7 +172,7 @@ onMounted(async () => {
             </p>
 
             <div class="btn-group">
-              <RouterLink :to="PackagesPage"
+              <RouterLink :to="{ name: 'Packages' }"
                 class="text-white px-4 py-3 hover:border-blue-700 hover:border-2  border border-gray-300 rounded-2xl">
                 Trip
                 Packages
@@ -235,9 +235,9 @@ onMounted(async () => {
                       </svg>
                     </div>
 
-                    <p class="card-subtitle">
-                    <p>{{ packageItem.location }} </p>
-                    </p>
+                    <div class="card-subtitle">
+                      <p>{{ packageItem.location }} </p>
+                    </div>
 
                     <h3 class="h3 card-title">
                       <span>{{ packageItem.package_name }}</span>

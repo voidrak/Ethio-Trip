@@ -68,5 +68,27 @@ export const useDestinationStore = defineStore("destinationStore", {
     },
 
 
+    /*********************  Update Destination ********************** */
+    async updateDestination(formData, destination) {
+
+      const res = await fetch(`/api/destinations/${destination}`, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      console.log(data)
+
+      if (data.errors) {
+        this.errors = data.errors;
+      } else {
+        this.errors = {};
+      }
+    },
+
+
   },
 });

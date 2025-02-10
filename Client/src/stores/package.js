@@ -32,6 +32,7 @@ export const usePackageStore = defineStore("packageStore", {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                     "Content-Type": "application/json",
                 },
+
             });
             const data = await res.json();
 
@@ -63,6 +64,26 @@ export const usePackageStore = defineStore("packageStore", {
                 this.errors = {};
                 router.push({ name: 'Packages' })
 
+            }
+        },
+        /*********************  Update Package ********************** */
+        async UpdatePackage(formData, packageId) {
+
+            const res = await fetch(`/api/packages/${packageId}`, {
+                method: "PUT",
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            });
+            const data = await res.json();
+            console.log(data)
+
+            if (data.errors) {
+                this.errors = data.errors;
+            } else {
+                this.errors = {};
             }
         },
 
