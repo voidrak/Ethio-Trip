@@ -137,7 +137,7 @@ onMounted(async () => {
       </div>
       <button @click="submitSubscription"
         class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white"><a
-          href="Change the a from chapa.co to https://checkout.chapa.co/checkout/payment/H1Iu5JevGtH3V1hHoEPmddXw6b5F6k8kcIYI5KhsRiu7i"
+          href="https://checkout.chapa.co/checkout/payment/H1Iu5JevGtH3V1hHoEPmddXw6b5F6k8kcIYI5KhsRiu7i"
           target="_blank" class="">Reserve Trip</a></button>
     </div>
   </div>

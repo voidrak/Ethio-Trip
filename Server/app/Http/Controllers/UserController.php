@@ -16,4 +16,29 @@ class UserController extends Controller
     {
         $user->delete();
     }
+
+    public function updateProfile(Request $request)
+    {
+        $user = $request->user();
+
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'phone_number' => 'required|string|max:15',
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+                function ($attribute, $value, $fail) use ($user) {
+                    if ($value !== $user->email && User::where('email', $value)->exists()) {
+                        $fail('The email has already been taken.');
+                    }
+                },
+            ],
+        ]);
+
+        $user->update($validatedData);
+
+        return response()->json($user);
+    }
 }

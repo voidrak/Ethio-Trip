@@ -16,7 +16,7 @@ import CreateDestinationPage from '@/views/Admin/CreateDestinationPage.vue';
 import AdminDestination from '@/views/Admin/AdminDestination.vue';
 import AdminDestinationDetailPage from '@/views/Admin/AdminDestinationDetailPage.vue';
 import AdminUsersPage from '@/views/Admin/AdminUsersPage.vue';
-
+import UpdateProfile from '@/views/User/UpdateProfile.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,22 +26,18 @@ const router = createRouter({
       name: 'Home',
       component: HomeView,
       meta: { welcome: true },
-
-
     },
     {
       path: '/login',
       name: 'Login',
       component: LoginPage,
       meta: { guest: true },
-
     },
     {
       path: '/register',
       name: 'Register',
       component: RegisterPage,
       meta: { guest: true },
-
     },
     {
       path: '/about',
@@ -52,33 +48,27 @@ const router = createRouter({
       path: '/destinations',
       name: 'Destination',
       component: DestinationPage,
-
     },
     {
       path: '/destinations/:id',
       name: 'DestinationDetail',
       component: DestinationDetailPage,
-
     },
     {
       path: '/adventure',
       name: 'Adventure',
       component: AdventurePage,
-
-
     },
     {
       path: '/packages',
       name: 'Packages',
       component: PackagesPage,
-
     },
     {
       path: '/packages/:id/checkout',
       name: 'CheckoutPage',
       component: CheckoutPage,
       meta: { auth: true },
-
     },
     {
       path: '/admin',
@@ -122,10 +112,14 @@ const router = createRouter({
       component: AdminUsersPage,
       meta: { admin: true },
     },
-
+    {
+      path: '/profile/update',
+      name: 'UpdateProfile',
+      component: UpdateProfile,
+      meta: { auth: true },
+    },
   ],
 })
-
 
 router.beforeEach(async (to, from) => {
   const authStore = useAuthStore();
