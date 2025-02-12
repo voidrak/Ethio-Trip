@@ -15,6 +15,7 @@ import AdminPackagePage from '@/views/Admin/AdminPackagePage.vue';
 import CreateDestinationPage from '@/views/Admin/CreateDestinationPage.vue';
 import AdminDestination from '@/views/Admin/AdminDestination.vue';
 import AdminDestinationDetailPage from '@/views/Admin/AdminDestinationDetailPage.vue';
+import AdminUsersPage from '@/views/Admin/AdminUsersPage.vue';
 
 
 const router = createRouter({
@@ -113,6 +114,12 @@ const router = createRouter({
       path: '/admin/create-destination',
       name: 'CreateDestination',
       component: CreateDestinationPage,
+      meta: { admin: true },
+    },
+    {
+      path: '/admin/users',
+      name: 'AdminUsers',
+      component: AdminUsersPage,
       meta: { admin: true },
     },
 
