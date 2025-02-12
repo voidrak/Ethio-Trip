@@ -51,7 +51,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/admin/users', [UserController::class, 'index'])->middleware(AdminMiddleware::class);
+    Route::delete('/admin/users/{user}', [UserController::class, 'destroy'])->middleware(AdminMiddleware::class);
 });
+
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);

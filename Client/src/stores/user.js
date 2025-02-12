@@ -19,7 +19,7 @@ export const useUserStore = defineStore("userStore", {
         },
       })
 
-      const data = await res.json();
+      const data = res.status !== 204 ? await res.json() : {};
       console.log(data);
 
       if (data.errors) {
@@ -39,7 +39,7 @@ export const useUserStore = defineStore("userStore", {
         },
       });
 
-      const data = await res.json();
+      const data = res.status !== 204 ? await res.json() : {};
       console.log(data);
 
       if (data.errors) {
