@@ -6,7 +6,7 @@ const authStore = useAuthStore()
 </script>
 
 <template>
-  <div class="flex border-b border-gray- justify-around items-center">
+  <div class="flex border-b border-gray-400 sticky top-0 left-0 z-10 justify-around items-center bg-white/90">
     <div class="flex 300  items-center bg-transparent  py-8  gap-x-8 justify-center ">
       <RouterLink :to="{ name: 'Home' }"
         class=" border-2  py-2 px-5 rounded-2xl text-xl flex items-center justify-center border-black hover:bg-black hover:text-white">

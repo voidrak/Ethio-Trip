@@ -280,12 +280,14 @@ body { background: var(--white); }
 \*-----------------------------------*/
 
 .header {
-  position: absolute;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
   padding-top: 61px;
-  z-index: 4;
+ 
+  
+  z-index: 100;
 }
 
 .header-top {
@@ -1087,7 +1089,7 @@ address {
   .navbar-list li { border-bottom: none; }
 
   .navbar-link {
-    color: var(--white);
+    color: black;
     --fs-4: 16px;
     font-weight: unset;
     text-transform: uppercase;
