@@ -173,10 +173,7 @@ onMounted(async () => {
                 Trip
                 Packages
               </RouterLink>
-              <RouterLink :to="PackagesPage"
-                class="text-white px-4 py-3 hover:border-blue-700 hover:border-2  border border-gray-300 rounded-2xl">
-                Hire a Guide
-              </RouterLink>
+
 
 
               <!-- <button class="btn btn-secondary navbar-link">Hire a Guide</button> -->

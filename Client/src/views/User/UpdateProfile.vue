@@ -1,121 +1,103 @@
 <script setup>
-import { ref, onMounted } from 'vue';
-import { useUserStore } from '@/stores/user';
 import UserHeader from '@/components/User/UserHeader.vue';
+import { useAuthStore } from "@/stores/auth";
+import { useUserStore } from '@/stores/user';
+import { storeToRefs } from "pinia";
+import { onMounted, reactive, watch, watchEffect } from 'vue';
 
-const userStore = useUserStore();
-const form = ref({
-  name: '',
-  phone_number: '',
-  email: '',
+
+const authStore = useAuthStore();
+const { errors } = storeToRefs(useUserStore());
+const { updateUserProfile } = useUserStore();
+const user = authStore.user
+
+const formData = reactive({
+  name: "",
+  email: "",
+  phone_number: "",
+
+
 });
-const errors = ref([]);
 
-onMounted(async () => {
-  const user = await userStore.getUserProfile();
-  console.log('User data in onMounted:', user); // Add this line
-  if (user) {
-    form.value.name = authStore.user.name;
-    form.value.phone_number = authStore.user.phone_number;
-    form.value.email = authStore.user.email;
-    console.log('Form values after setting:', form.value); // Add this line
-  }
-});
 
-const handleSubmit = async () => {
-  const response = await userStore.updateUserProfile(form.value);
-  if (userStore.errors) {
-    errors.value = Object.values(userStore.errors);
-  } else {
-    alert('Profile updated successfully!');
-  }
+const submitForm = () => {
+  updateUserProfile(formData);
+  console.log(user);
 };
+
+
+watchEffect(() => {
+  formData.name = user?.name || "";
+  formData.email = user?.email || "";
+  formData.phone_number = user?.phone_number || "";
+})
+
+onMounted(() => (errors.value = {}));
 </script>
 
 <template>
   <UserHeader />
-  <div class="update-profile">
-    <h1>Update Profile</h1>
-    <form @submit.prevent="handleSubmit">
-      <div class="form-group">
-        <label for="name">Name:</label>
-        <input v-model="form.name" type="text" id="name" required class="form-control" />
+  <div class="  bg-gray-100 text-gray-900 flex justify-center">
+    <div class="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
+      <div class="lg:w-1/2 xl:w-5/12 p-6  ">
+
+        <div class="mt-4 flex flex-col items-center">
+          <h1 class="text-2xl xl:text-3xl font-extrabold">
+            Update Profile Details
+          </h1>
+          <div class="w-full flex-1 mt-8">
+            <div class="flex flex-col items-center">
+
+
+
+            </div>
+
+
+            <form @submit.prevent="submitForm" class="mx-auto space-y-8 max-w-md">
+              <input v-model="formData.name"
+                class="w-full px-8 py-6 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-2"
+                id="name" name="name" type="text" placeholder="Full Name" />
+              <p v-if="errors.name" class="text-sm text-red-500">
+                {{ errors.name[0] }}
+              </p>
+
+              <input v-model="formData.email"
+                class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-2"
+                id="email" name="email" type="email" placeholder="Email" />
+              <p v-if="errors.email" class="text-sm text-red-500">
+                {{ errors.email[0] }}
+              </p>
+
+              <input v-model="formData.phone_number"
+                class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-2"
+                id="phone_number" name="phone_number" type="tel" placeholder="Phone Number" />
+              <p v-if="errors.phone_number" class="text-sm text-red-500 mt-1">
+                Invalid Format! Use (0912345678) Format
+              </p>
+
+              <button type="submit"
+                class="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+                <svg class="w-6 h-6 -ml-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                  <circle cx="8.5" cy="7" r="4" />
+                  <path d="M20 8v6M23 11h-6" />
+                </svg>
+                <span class="ml-3">
+                  Sign Up
+                </span>
+              </button>
+            </form>
+            <RouterLink :to="{ name: 'Login' }">
+              <p class="!mt-8 text-center text-sm text-gray-800">
+                Do have an account
+                <span class="ml-1 whitespace-nowrap font-semibold text-blue-600 hover:underline">Sign In
+                </span>
+              </p>
+            </RouterLink>
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="phone_number">Phone Number:</label>
-        <input v-model="form.phone_number" type="text" id="phone_number" required class="form-control" />
-      </div>
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input v-model="form.email" type="email" id="email" required class="form-control" />
-      </div>
-      <button type="submit" class="btn btn-primary">Update</button>
-    </form>
-    <div v-if="errors.length" class="error-messages">
-      <ul>
-        <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
-      </ul>
     </div>
   </div>
 </template>
-
-<style scoped>
-.update-profile {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  background-color: #f9f9f9;
-}
-
-.update-profile h1 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-.form-control {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-  font-size: 16px;
-}
-
-.form-control:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-.btn {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.btn:hover {
-  background-color: #0056b3;
-}
-
-.error-messages {
-  color: red;
-  margin-top: 20px;
-}
-</style>

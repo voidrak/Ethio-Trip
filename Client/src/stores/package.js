@@ -84,6 +84,7 @@ export const usePackageStore = defineStore("packageStore", {
                 this.errors = data.errors;
             } else {
                 this.errors = {};
+                return data;
             }
         },
 

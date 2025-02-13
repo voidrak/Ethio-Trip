@@ -1,6 +1,6 @@
 <script setup>
 import { useAuthStore } from '@/stores/auth';
-
+import UserDropdown from '@/components/User/UserDropdown.vue';
 
 const authStore = useAuthStore()
 </script>
@@ -28,16 +28,13 @@ const authStore = useAuthStore()
         Us</RouterLink>
     </div>
 
-    <div class="flex gap-x-4  items-center" v-if="authStore.user">
-      <p class="text-black font-bold">{{ authStore.user.name }} </p>
-      <form @submit.prevent="authStore.logout" class="">
-        <button
-          class="hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-xl  px-3  py-2 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-red-500">Log
-          out</button>
-      </form>
+    <div class="">
+      <div class="flex gap-x-4  items-center" v-if="authStore.user">
+        <UserDropdown />
+      </div>
+      <RouterLink :to="{ name: 'Login' }" v-else class=" px-4 py-2 text-white rounded-lg bg-[#184c91]   ">Login
+      </RouterLink>
 
     </div>
-    <RouterLink v-else :to="{ name: 'Login' }" class="  px-4 py-2 text-white rounded-lg bg-[#184c91]   ">Login
-    </RouterLink>
   </div>
 </template>

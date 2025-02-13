@@ -52,7 +52,7 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/admin/users', [UserController::class, 'index'])->middleware(AdminMiddleware::class);
     Route::delete('/admin/users/{user}', [UserController::class, 'destroy'])->middleware(AdminMiddleware::class);
-    Route::put('/user/profile', [UserController::class, 'updateProfile']);
+    Route::put('/user/profile', [UserController::class, 'update']);
 });
 
 

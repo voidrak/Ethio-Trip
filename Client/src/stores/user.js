@@ -50,32 +50,6 @@ export const useUserStore = defineStore("userStore", {
       }
     },
 
-    /********************* Get User Profile  ********************** */
-    async getUserProfile() {
-      try {
-        const res = await fetch('/api/user/profile', {
-          method: 'GET',
-          headers: {
-            authorization: `Bearer ${localStorage.getItem("token")}`,
-            "Content-Type": "application/json",
-          },
-        });
-
-        const data = await res.json();
-        console.log('Fetched user data:', data); // Add this line
-
-        if (data.errors) {
-          this.errors = data.errors;
-        } else {
-          this.user = data;
-          return data;
-        }
-      } catch (error) {
-        console.error('Error fetching user profile:', error);
-        this.errors = { message: 'Failed to fetch user profile' };
-      }
-    },
-
     /********************* Update User Profile  ********************** */
     async updateUserProfile(userData) {
       const res = await fetch('/api/user/profile', {
@@ -94,6 +68,7 @@ export const useUserStore = defineStore("userStore", {
         this.errors = data.errors;
       } else {
         this.user = data;
+        router.push({ name: "Home" });
         return data;
       }
     },

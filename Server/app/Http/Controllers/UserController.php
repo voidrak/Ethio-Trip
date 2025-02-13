@@ -17,13 +17,13 @@ class UserController extends Controller
         $user->delete();
     }
 
-    public function updateProfile(Request $request)
+    public function update(Request $request)
     {
         $user = $request->user();
 
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'phone_number' => 'required|string|max:15',
+            'phone_number' => ['required', 'regex:/^09\d{8}$/'],
             'email' => [
                 'required',
                 'string',
