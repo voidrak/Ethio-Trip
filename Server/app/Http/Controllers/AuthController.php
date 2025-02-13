@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\WelcomeEmail;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -23,6 +25,14 @@ class AuthController extends Controller
         $user =  User::create($fields);
 
         $token = $user->createToken($request->name);
+
+        //  Sending Welcome Message
+
+        $toEmail = $request->email;
+        $user_name =  $request->name;
+        $subject = 'Welcome Message From Ethio Trip';
+
+        Mail::to($toEmail)->send(new WelcomeEmail($user_name, $subject));
 
         return ['user' => $user, 'token' => $token->plainTextToken];
     }
