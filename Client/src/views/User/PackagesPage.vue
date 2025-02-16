@@ -130,6 +130,8 @@ const filteredPackages = computed(() => {
           </div>
 
           <div class="card-price">
+
+            <p class="my-3 font-semibold">{{ packageItem.user.name }}</p>
             <p class="my-2">Available Space {{ packageItem.available_space }}</p>
 
             <div class="wrapper">
