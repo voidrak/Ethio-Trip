@@ -12,7 +12,7 @@ const searchQuery = ref('');
 
 onMounted(async () => {
   packages.value = await getAllPackages();
-
+  console.log(packages.value);
 })
 
 

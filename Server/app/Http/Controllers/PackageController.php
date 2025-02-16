@@ -13,7 +13,7 @@ class PackageController extends Controller
      */
     public function index()
     {
-        return Package::latest()->get();
+        return Package::with('user')->latest()->get();
     }
 
     /**
