@@ -10,6 +10,29 @@ export const useUserStore = defineStore("userStore", {
   },
 
   actions: {
+    /********************* Register Provider  ********************** */
+
+    async authenticate(formData) {
+      const res = await fetch(`/api/register/provider`, {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+      console.log(data);
+      if (res.ok) {
+        this.errors = {};
+        localStorage.setItem("token", data.token);
+        this.user = data.user;
+        router.push({ name: "Home" });
+      } else {
+        this.errors = data.errors;
+      }
+    },
+
     /********************* Get All Users  ********************** */
     async getAllUsers() {
       const res = await fetch('/api/admin/users', {

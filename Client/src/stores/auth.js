@@ -37,6 +37,7 @@ export const useAuthStore = defineStore("authStore", {
       });
 
       const data = await res.json();
+      console.log(data);
       if (res.ok) {
         this.errors = {};
         localStorage.setItem("token", data.token);

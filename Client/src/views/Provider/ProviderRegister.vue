@@ -1,12 +1,12 @@
 <script setup>
 import UserHeader from '@/components/User/UserHeader.vue';
-import { useAuthStore } from "@/stores/auth";
+import { useUserStore } from '@/stores/user';
 import { storeToRefs } from "pinia";
 import { onMounted, reactive } from "vue";
 import { RouterLink } from 'vue-router';
 
-const authStore = useAuthStore();
-const { errors } = storeToRefs(useAuthStore());
+const { errors } = storeToRefs(useUserStore());
+const { authenticate } = useUserStore();
 
 const formData = reactive({
   name: "",
@@ -14,12 +14,11 @@ const formData = reactive({
   phone_number: "",
   password: "",
   password_confirmation: "",
-
 });
 
 
 const submitForm = () => {
-  authStore.authenticate("register", formData);
+  authenticate(formData);
 };
 
 onMounted(() => (errors.value = {}));
@@ -33,7 +32,7 @@ onMounted(() => (errors.value = {}));
 
         <div class="mt-4 flex flex-col items-center">
           <h1 class="text-2xl xl:text-3xl font-extrabold">
-            Sign Up
+            Provider Sign Up
           </h1>
           <div class="w-full flex-1 mt-8">
             <div class="flex flex-col items-center">
@@ -52,7 +51,7 @@ onMounted(() => (errors.value = {}));
             <form @submit.prevent="submitForm" class="mx-auto max-w-xs">
               <input v-model="formData.name"
                 class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-2"
-                id="name" name="name" type="text" placeholder="Full Name" />
+                id="name" name="name" type="text" placeholder=" Provider Company Name" />
               <p v-if="errors.name" class="text-sm text-red-500">
                 {{ errors.name[0] }}
               </p>
@@ -107,12 +106,6 @@ onMounted(() => (errors.value = {}));
                 Do have an account
                 <span class="ml-1 whitespace-nowrap font-semibold text-blue-600 hover:underline">Sign In
                 </span>
-              </RouterLink>
-
-              <RouterLink :to="{ name: 'ProviderRegister' }"
-                class=" mt-3 text-center  flex text-sm text-gray-800 gap-x-2">
-                Register as <span
-                  class="ml-1 whitespace-nowrap font-semibold text-blue-600 hover:underline">Provider</span>
               </RouterLink>
             </div>
           </div>

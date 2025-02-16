@@ -17,6 +17,8 @@ import AdminDestination from '@/views/Admin/AdminDestination.vue';
 import AdminDestinationDetailPage from '@/views/Admin/AdminDestinationDetailPage.vue';
 import AdminUsersPage from '@/views/Admin/AdminUsersPage.vue';
 import UpdateProfile from '@/views/User/UpdateProfile.vue';
+import ProviderRegister from '@/views/Provider/ProviderRegister.vue';
+import PreProviderHome from '@/views/Provider/PreProviderHome.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -118,6 +120,19 @@ const router = createRouter({
       component: UpdateProfile,
       meta: { auth: true },
     },
+
+    {
+      path: '/provider/register',
+      name: 'ProviderRegister',
+      component: ProviderRegister,
+      meta: { guest: true }
+    }
+    , {
+      path: '/preProvider',
+      name: 'PreProvider',
+      component: PreProviderHome,
+      meta: { PreProvider: true }
+    }
   ],
 })
 
@@ -134,9 +149,13 @@ router.beforeEach(async (to, from) => {
   if (authStore.user?.role === "admin" && to.meta.welcome) {
     return { name: "AdminHome" };
   }
-  if (authStore.user?.role !== "admin" && to.meta.admin) {
-    return { name: "Home" };
+  if (authStore.user?.role === "preProvider" && to.meta.welcome) {
+    return { name: "PreProvider" };
   }
+  if (authStore.user?.role === "preProvider" && to.meta.auth) {
+    return { name: "PreProvider" };
+  }
+
   if (authStore.user?.role === 'admin' && !to.meta.admin) {
     return next(false);
   }

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\WelcomeEmail;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -40,5 +42,34 @@ class UserController extends Controller
         $user->update($validatedData);
 
         return response()->json($user);
+    }
+
+    public function registerProvider(Request $request)
+    {
+        $fields = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email|unique:users',
+            'phone_number' => ['required', 'regex:/^09\d{8}$/'],
+            'password' => 'required|min:8|confirmed ',
+        ]);
+
+        $fields['role'] = "preProvider";
+
+
+
+
+        $user =  User::create($fields);
+
+        $token = $user->createToken($request->name);
+
+        //  Sending Welcome Message
+
+        $toEmail = $request->email;
+        $user_name =  $request->name;
+        $subject = 'Welcome Message From Ethio Trip';
+
+        Mail::to($toEmail)->send(new WelcomeEmail($user_name, $subject));
+
+        return ['user' => $user, 'token' => $token->plainTextToken];
     }
 }

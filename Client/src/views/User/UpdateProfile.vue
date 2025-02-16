@@ -84,17 +84,11 @@ onMounted(() => (errors.value = {}));
                   <path d="M20 8v6M23 11h-6" />
                 </svg>
                 <span class="ml-3">
-                  Sign Up
+                  Update Profile
                 </span>
               </button>
             </form>
-            <RouterLink :to="{ name: 'Login' }">
-              <p class="!mt-8 text-center text-sm text-gray-800">
-                Do have an account
-                <span class="ml-1 whitespace-nowrap font-semibold text-blue-600 hover:underline">Sign In
-                </span>
-              </p>
-            </RouterLink>
+
           </div>
         </div>
       </div>
