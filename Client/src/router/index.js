@@ -20,6 +20,7 @@ import UpdateProfile from '@/views/User/UpdateProfile.vue';
 import ProviderRegister from '@/views/Provider/ProviderRegister.vue';
 import PreProviderHome from '@/views/Provider/PreProviderHome.vue';
 import AdminPreProvider from '@/views/Admin/AdminPreProvider.vue';
+import ProviderHome from '@/views/Provider/ProviderHome.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -140,6 +141,12 @@ const router = createRouter({
       component: PreProviderHome,
       meta: { PreProvider: true }
     }
+    , {
+      path: '/provider',
+      name: 'ProviderHome',
+      component: ProviderHome,
+      meta: { Provider: true }
+    }
   ],
 })
 
@@ -161,6 +168,12 @@ router.beforeEach(async (to, from) => {
   }
   if (authStore.user?.role === "preProvider" && to.meta.auth) {
     return { name: "PreProvider" };
+  }
+  if (authStore.user?.role === "provider" && to.meta.welcome) {
+    return { name: "ProviderHome" };
+  }
+  if (authStore.user?.role === "provider" && to.meta.auth) {
+    return { name: "ProviderHome" };
   }
 
   if (authStore.user?.role === 'admin' && !to.meta.admin) {
