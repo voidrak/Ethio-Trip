@@ -22,6 +22,7 @@ import PreProviderHome from '@/views/Provider/PreProviderHome.vue';
 import AdminPreProvider from '@/views/Admin/AdminPreProvider.vue';
 import ProviderHome from '@/views/Provider/ProviderHome.vue';
 import ProviderPackagePage from '@/views/Provider/ProviderPackagePage.vue';
+import Events from '@/views/User/Events.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -48,6 +49,11 @@ const router = createRouter({
       path: '/about',
       name: 'AboutUs',
       component: AboutUs,
+    },
+    {
+      path: '/events',
+      name: 'Events',
+      component: Events,
     },
     {
       path: '/destinations',
