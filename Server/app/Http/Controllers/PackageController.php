@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Package;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth; // Import the Auth facade
 
 class PackageController extends Controller
 {
@@ -20,10 +21,6 @@ class PackageController extends Controller
      */
     public function store(Request $request)
     {
-
-
-
-
         $validatedData = $request->validate([
             'package_name' => 'required|string|max:255',
             'package_description' => 'required|string',
@@ -45,7 +42,8 @@ class PackageController extends Controller
             $validatedData['package_image'] = $imagePath;
         }
 
-        // return $validatedData;
+        // Add the user_id to the validated data
+        $validatedData['user_id'] = Auth::id();
 
         // Create the package
         $package = Package::create($validatedData);
@@ -67,7 +65,6 @@ class PackageController extends Controller
      */
     public function update(Request $request, Package $package)
     {
-
         $validatedData = $request->validate([
             'package_name' => 'required|string|max:255',
             'package_description' => 'required|string',
@@ -88,5 +85,20 @@ class PackageController extends Controller
     public function destroy(Package $package)
     {
         //
+    }
+
+    /**
+     * Get packages created by the currently logged-in user.
+     */
+    public function providerPackages()
+    {
+        $user = Auth::user(); // Get the authenticated user
+        if (!$user) {
+            return response()->json(['message' => 'Unauthorized'], 401); // Or handle the case where the user is not logged in
+        }
+
+        $packages = Package::where('user_id', $user->id)->latest()->get(); // Retrieve packages for the user
+
+        return response()->json($packages); // Return the packages as a JSON response
     }
 }

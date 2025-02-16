@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Package;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SubscriptionController extends Controller
 {
@@ -63,5 +64,28 @@ class SubscriptionController extends Controller
     public function destroy(Subscription $subscription)
     {
         $subscription->delete();
+    }
+
+    /**
+     * Get subscriptions for packages created by the currently logged-in user.
+     */
+    public function providerSubscriptions()
+    {
+        $user = Auth::user();
+
+        if (!$user) {
+            return response()->json(['message' => 'Unauthorized'], 401);
+        }
+
+        // Get the package IDs that belong to the logged-in user
+        $packageIds = Package::where('user_id', $user->id)->pluck('id');
+
+        // Get the subscriptions for those package IDs
+        $subscriptions = Subscription::whereIn('package_id', $packageIds)
+            ->latest()
+            ->with(['user', 'package'])
+            ->get();
+
+        return response()->json($subscriptions);
     }
 }

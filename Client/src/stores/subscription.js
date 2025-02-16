@@ -31,6 +31,23 @@ export const UseSubscriptionStore = defineStore('subscriptionStore', {
         return data
       }
     },
+    async getProviderSubscription() {
+      const res = await fetch("/api/providerSubscriptions", {
+        method: "Get",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+
+      if (data.errors) {
+        this.errors = data.errors;
+      } else {
+        this.errors = {};
+        return data
+      }
+    },
 
     async createSubscription(formData) {
       const res = await fetch("/api/subscriptions", {

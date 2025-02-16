@@ -5,20 +5,20 @@ import { UseSubscriptionStore } from '@/stores/subscription';
 import { onMounted, ref } from 'vue';
 
 
-const { getAllSubscription } = UseSubscriptionStore()
+const { getProviderSubscription } = UseSubscriptionStore()
 const { deleteSubscription } = UseSubscriptionStore()
 
 const subscriptions = ref([]);
 const searchQuery = ref("")
 
 onMounted(async () => {
-  subscriptions.value = await getAllSubscription();
+  subscriptions.value = await getProviderSubscription();
   console.log(subscriptions.value);
 })
 
 const handleDelete = async (subscription) => {
   deleteSubscription(subscription);
-  subscriptions.value = await getAllSubscription();
+  subscriptions.value = await getProviderSubscription();
 
 }
 
@@ -63,7 +63,7 @@ const handleDelete = async (subscription) => {
             <th scope="col" class="px-6 py-3 text-left text-xs font-bold  uppercase tracking-wider">
               Package
             </th>
-            <th scope="col" class="px-6 py-3 text-left text-xs font-bold  uppercase tracking-wider text-center">
+            <th scope="col" class="px-6 py-3   text-xs font-bold  uppercase tracking-wider text-center">
               Number of Person
             </th>
             <th scope="col" class="px-6 py-3 text-left text-xs font-bold  uppercase tracking-wider">

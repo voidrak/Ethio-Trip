@@ -21,6 +21,7 @@ import ProviderRegister from '@/views/Provider/ProviderRegister.vue';
 import PreProviderHome from '@/views/Provider/PreProviderHome.vue';
 import AdminPreProvider from '@/views/Admin/AdminPreProvider.vue';
 import ProviderHome from '@/views/Provider/ProviderHome.vue';
+import ProviderPackagePage from '@/views/Provider/ProviderPackagePage.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -145,6 +146,12 @@ const router = createRouter({
       path: '/provider',
       name: 'ProviderHome',
       component: ProviderHome,
+      meta: { Provider: true }
+    }
+    , {
+      path: '/ProviderPackages',
+      name: 'ProviderPackages',
+      component: ProviderPackagePage,
       meta: { Provider: true }
     }
   ],

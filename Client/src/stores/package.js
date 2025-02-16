@@ -43,6 +43,24 @@ export const usePackageStore = defineStore("packageStore", {
                 return data
             }
         },
+        async getProviderPackages() {
+            const res = await fetch("/api/ProviderPackages", {
+                method: "Get",
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    "Content-Type": "application/json",
+                },
+
+            });
+            const data = await res.json();
+
+            if (data.errors) {
+                this.errors = data.errors;
+            } else {
+                this.errors = {};
+                return data
+            }
+        },
 
         /*********************  Create Package ********************** */
         async createPackage(formData) {
@@ -62,7 +80,7 @@ export const usePackageStore = defineStore("packageStore", {
                 this.errors = data.errors;
             } else {
                 this.errors = {};
-                router.push({ name: 'Packages' })
+                router.push({ name: 'ProviderPackages' })
 
             }
         },

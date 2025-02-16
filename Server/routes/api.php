@@ -21,9 +21,10 @@ Route::get('/user', function (Request $request) {
 Route::get('/packages', [PackageController::class, 'index']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/packages/{package}', [PackageController::class, 'show']);
-    Route::post('/packages', [PackageController::class, 'store'])->middleware(AdminMiddleware::class);
-    Route::put('/packages/{package}', [PackageController::class, 'update'])->middleware(AdminMiddleware::class);
-    Route::delete('/packages/{package}', [PackageController::class, 'destroy'])->middleware(AdminMiddleware::class);
+    Route::get('/ProviderPackages', [PackageController::class, 'ProviderPackages']);
+    Route::post('/packages', [PackageController::class, 'store']);
+    Route::put('/packages/{package}', [PackageController::class, 'update']);
+    Route::delete('/packages/{package}', [PackageController::class, 'destroy']);
 });
 
 
@@ -31,6 +32,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/subscriptions', [SubscriptionController::class, 'index']);
+    Route::get('/providerSubscriptions', [SubscriptionController::class, 'providerSubscriptions']);
     Route::post('/subscriptions', [SubscriptionController::class, 'store']);
     Route::delete('/subscriptions/{subscription}', [SubscriptionController::class, 'destroy']);
 });
@@ -43,17 +45,17 @@ Route::get('/destinations', [DestinationController::class, 'index']);
 Route::get('/destinations/{destination}', [DestinationController::class, 'show']);
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::post('/destinations', [DestinationController::class, 'store'])->middleware(AdminMiddleware::class);;
-    Route::put('/destinations/{destination}', [DestinationController::class, 'update'])->middleware(AdminMiddleware::class);;
-    Route::delete('/destinations/{destination}', [DestinationController::class, 'destroy'])->middleware(AdminMiddleware::class);;
+    Route::post('/destinations', [DestinationController::class, 'store']);;
+    Route::put('/destinations/{destination}', [DestinationController::class, 'update']);;
+    Route::delete('/destinations/{destination}', [DestinationController::class, 'destroy']);;
 });
 
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/admin/users', [UserController::class, 'index'])->middleware(AdminMiddleware::class);
-    Route::delete('/admin/users/{user}', [UserController::class, 'destroy'])->middleware(AdminMiddleware::class);
+    Route::get('/admin/users', [UserController::class, 'index']);
+    Route::delete('/admin/users/{user}', [UserController::class, 'destroy']);
     Route::put('/user/profile', [UserController::class, 'update']);
-    Route::get('/admin/preProvider', [UserController::class, 'indexPreProvider'])->middleware(AdminMiddleware::class);
+    Route::get('/admin/preProvider', [UserController::class, 'indexPreProvider']);
     Route::put('/admin/approvePreProvider/{user}', [UserController::class, 'approvePreProvider']);
 });
 
