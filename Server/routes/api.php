@@ -53,6 +53,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/admin/users', [UserController::class, 'index'])->middleware(AdminMiddleware::class);
     Route::delete('/admin/users/{user}', [UserController::class, 'destroy'])->middleware(AdminMiddleware::class);
     Route::put('/user/profile', [UserController::class, 'update']);
+    Route::get('/admin/preProvider', [UserController::class, 'indexPreProvider'])->middleware(AdminMiddleware::class);
+    Route::put('/admin/approvePreProvider/{user}', [UserController::class, 'approvePreProvider']);
 });
 
 Route::post('/register/provider', [UserController::class, 'registerProvider']);

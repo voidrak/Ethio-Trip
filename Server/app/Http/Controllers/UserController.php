@@ -13,6 +13,10 @@ class UserController extends Controller
     {
         return User::where('role', '!=', 'admin')->latest()->get();
     }
+    public function indexPreProvider()
+    {
+        return User::where('role', '=', 'preProvider')->latest()->get();
+    }
 
     public function destroy(User $user)
     {
@@ -71,5 +75,13 @@ class UserController extends Controller
         Mail::to($toEmail)->send(new WelcomeEmail($user_name, $subject));
 
         return ['user' => $user, 'token' => $token->plainTextToken];
+    }
+
+    public function approvePreProvider(User $user)
+    {
+        $user->role = 'provider';
+        $user->save();
+
+        return response()->json($user);
     }
 }

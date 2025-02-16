@@ -19,6 +19,7 @@ import AdminUsersPage from '@/views/Admin/AdminUsersPage.vue';
 import UpdateProfile from '@/views/User/UpdateProfile.vue';
 import ProviderRegister from '@/views/Provider/ProviderRegister.vue';
 import PreProviderHome from '@/views/Provider/PreProviderHome.vue';
+import AdminPreProvider from '@/views/Admin/AdminPreProvider.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -112,6 +113,12 @@ const router = createRouter({
       path: '/admin/users',
       name: 'AdminUsers',
       component: AdminUsersPage,
+      meta: { admin: true },
+    },
+    {
+      path: '/admin/preProvider',
+      name: 'AdminPreProvider',
+      component: AdminPreProvider,
       meta: { admin: true },
     },
     {
