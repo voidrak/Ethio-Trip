@@ -35,14 +35,14 @@ import UserHeader from '@/components/User/UserHeader.vue';
           </div>
         </div>
         <div class="w-[750px] shrink-0">
-          <img class="w-full rounded-lg  shadow-lg shadow-gray-600" src="/public/img/The Festival of Timkat.jpeg"
+          <img class="w-full rounded-lg  shadow-xl shadow-gray-600" src="/public/img/The Festival of Timkat.jpeg"
             alt="">
         </div>
       </div>
 
       <div class="flex justify-between items-center mt-12 gap-x-8">
         <div class="w-[750px] shrink-0 ">
-          <img class="w-full rounded-lg -order-1 shadow-lg shadow-gray-600" src="/public/img/irrecha.jpeg" alt="">
+          <img class="w-full rounded-lg -order-1 shadow-xl shadow-gray-600" src="/public/img/irrecha.jpeg" alt="">
         </div>
         <div class="">
           <h1 class="font-semibold text-lg">Irreecha: The Colorful Oromo Thanksgiving Festival</h1>
@@ -97,8 +97,7 @@ import UserHeader from '@/components/User/UserHeader.vue';
           </div>
         </div>
         <div class="w-[750px] shrink-0">
-          <img class="w-full rounded-lg  shadow-lg shadow-gray-600" src="/public/img/The Festival of Timkat.jpeg"
-            alt="">
+          <img class="w-full rounded-lg  shadow-xl shadow-gray-600" src="/public/img/MESKEL CELEBRATION.jpeg" alt="">
         </div>
       </div>
 
