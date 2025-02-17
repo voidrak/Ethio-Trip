@@ -22,10 +22,9 @@ const authStore = useAuthStore()
       <RouterLink :to="{ name: 'Packages' }"
         class=" border-2  py-2 px-5 rounded-2xl text-xl flex items-center justify-center border-black hover:bg-black hover:text-white ">
         Trip Book</RouterLink>
-      <RouterLink :to="{ name: 'Packages' }"
+      <RouterLink :to="{ name: 'Events' }"
         class=" border-2  py-2 px-5 rounded-2xl text-xl flex items-center justify-center border-black hover:bg-black hover:text-white ">
-        Contact
-        Us</RouterLink>
+        Events</RouterLink>
     </div>
 
     <div class="">
