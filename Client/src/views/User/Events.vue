@@ -11,7 +11,7 @@ import UserHeader from '@/components/User/UserHeader.vue';
     <UserHeader />
     <h1 class="mt-10 text-blue-400  text-3xl text-center font-extrabold">Events and Holidays</h1>
 
-    <div class="grid gap-y-8 px-48 mx-auto">
+    <div class="grid gap-y-8 px-48 mx-auto pb-20">
 
       <div class="flex items-center justify-between mt-12 gap-x-8">
         <div class="">
