@@ -288,7 +288,7 @@ onMounted(async () => {
 
             </div>
 
-            <button class="btn btn-secondary navbar-link">Contact Us !</button>
+
 
 
 

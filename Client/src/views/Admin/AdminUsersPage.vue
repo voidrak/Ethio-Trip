@@ -2,7 +2,8 @@
 import AdminLayout from '@/layout/AdminLayout.vue';
 
 import { useUserStore } from '@/stores/user';
-import { onMounted, ref } from 'vue';
+import { computed, onMounted, reactive, ref } from 'vue';
+
 
 
 const { getAllUsers } = useUserStore()
@@ -21,6 +22,15 @@ const handleDelete = async (user) => {
   users.value = await getAllUsers();
 
 }
+
+const filteredUsers = computed(() => {
+  if (!searchQuery.value) {
+    return users.value;
+  }
+  return users.value.filter(packageItem =>
+    packageItem.name.toLowerCase().includes(searchQuery.value.toLowerCase())
+  );
+});
 
 </script>
 
@@ -59,10 +69,13 @@ const handleDelete = async (user) => {
             <th scope="col" class="px-6 py-3 text-left text-xs font-bold  uppercase tracking-wider">
               email
             </th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-bold  uppercase tracking-wider">
+              Type
+            </th>
           </tr>
         </thead>
         <tbody class="bg-white divide-y divide-gray-200">
-          <tr v-for="(user, index) in users" :key="index">
+          <tr v-for="(user, index) in filteredUsers" :key="index">
             <td class="px-6 py-4 whitespace-nowrap">
               <div class="flex items-center">
 
@@ -79,6 +92,9 @@ const handleDelete = async (user) => {
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
               {{ user.email }}
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              {{ user.role }}
             </td>
             <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium flex">
               <button @click.prevent="handleDelete(user.id)"
