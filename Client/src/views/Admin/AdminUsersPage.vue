@@ -27,8 +27,8 @@ const filteredUsers = computed(() => {
   if (!searchQuery.value) {
     return users.value;
   }
-  return users.value.filter(packageItem =>
-    packageItem.name.toLowerCase().includes(searchQuery.value.toLowerCase())
+  return users.value.filter(user =>
+    user.name.toLowerCase().includes(searchQuery.value.toLowerCase())
   );
 });
 
