@@ -70,6 +70,9 @@ onMounted(() => (errors.value = {}));
               <p v-if="errors.phone_number" class="text-sm text-red-500 mt-1">
                 Invalid Format! Use (0912345678) Format
               </p>
+              <p v-if="errors.phone_number" class="text-sm text-red-500">
+                {{ errors.phone_number[0] }}
+              </p>
 
 
               <input v-model="formData.password"
