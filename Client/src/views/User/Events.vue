@@ -34,14 +34,14 @@ import UserHeader from '@/components/User/UserHeader.vue';
               🌍 Plan your visit to witness Timkat’s spiritual and cultural magnificence! 🚀</p>
           </div>
         </div>
-        <div class="w-[750px] shrink-0">
+        <div class="w-[700px] shrink-0">
           <img class="w-full rounded-lg  shadow-xl shadow-gray-600" src="/public/img/The Festival of Timkat.jpeg"
             alt="">
         </div>
       </div>
 
       <div class="flex justify-between items-center mt-12 gap-x-8">
-        <div class="w-[750px] shrink-0 ">
+        <div class="w-[700px] shrink-0 ">
           <img class="w-full rounded-lg -order-1 shadow-xl shadow-gray-600" src="/public/img/irrecha.jpeg" alt="">
         </div>
         <div class="">
@@ -96,7 +96,7 @@ import UserHeader from '@/components/User/UserHeader.vue';
               🔥 Don’t miss the mesmerizing flames of the Demera and the joy of this ancient celebration! 🔥</p>
           </div>
         </div>
-        <div class="w-[750px] shrink-0">
+        <div class="w-[700px] shrink-0">
           <img class="w-full rounded-lg  shadow-xl shadow-gray-600" src="/public/img/MESKEL CELEBRATION.jpeg" alt="">
         </div>
       </div>
