@@ -13,7 +13,7 @@ class PackageController extends Controller
      */
     public function index()
     {
-        return Package::with('user')->latest()->get();
+        return Package::with('user')->where('available_space', '>', 0)->latest()->get();
     }
 
     /**
