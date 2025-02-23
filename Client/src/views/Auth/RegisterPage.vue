@@ -3,10 +3,13 @@ import UserHeader from '@/components/User/UserHeader.vue';
 import { useAuthStore } from "@/stores/auth";
 import { storeToRefs } from "pinia";
 import { onMounted, reactive } from "vue";
-import { RouterLink } from 'vue-router';
+import { RouterLink, useRouter } from 'vue-router'; // Import useRouter
+import { ref } from 'vue'; // Import ref
 
 const authStore = useAuthStore();
 const { errors } = storeToRefs(useAuthStore());
+const router = useRouter(); // Use useRouter
+const registrationSuccess = ref(false); // Add a ref for registration success
 
 const formData = reactive({
   name: "",
@@ -18,8 +21,18 @@ const formData = reactive({
 });
 
 
-const submitForm = () => {
-  authStore.authenticate("register", formData);
+const submitForm = async () => {
+  try {
+    await authStore.authenticate("register", formData);
+    registrationSuccess.value = true; // Set registration success to true
+    setTimeout(() => {
+      registrationSuccess.value = false; // Reset after 3 seconds
+      router.push({ name: 'Login' }); // Redirect to login page
+    }, 3000); // Redirect after 3 seconds
+  } catch (error) {
+    console.error("Registration failed:", error);
+    // Handle registration failure (e.g., display error message)
+  }
 };
 
 onMounted(() => (errors.value = {}));
@@ -127,5 +140,11 @@ onMounted(() => (errors.value = {}));
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- Success Alert -->
+  <div v-if="registrationSuccess"
+    class="fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white py-2 px-4 rounded-md shadow-lg">
+    Registration successful! Redirecting to login...
   </div>
 </template>
