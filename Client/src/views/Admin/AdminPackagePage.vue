@@ -8,6 +8,7 @@ import { computed, onMounted, ref } from 'vue';
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const { getAllPackages } = usePackageStore()
+const { deletePackage } = usePackageStore()
 
 const packages = ref([]);
 const isEditPackageOpen = ref(false);
@@ -35,7 +36,8 @@ function closeEditPackageModal() {
 
 }
 
-const handleUpdate = async () => {
+const handleUpdate = async (packageId) => {
+  await deletePackage(packageId);
   packages.value = await getAllPackages();
 
 }
@@ -135,8 +137,8 @@ const handleUpdate = async () => {
                 {{ packageItem.price }} Br
                 <span class="text-black font-bold">/ per person</span>
               </p>
-              <div @click.prevent="openEditPackageModal(packageItem)" class="mx-auto">
-                <button class="btn btn-secondary">Update</button>
+              <div @click.prevent="handleUpdate(packageItem.id)" class="mx-auto">
+                <button class="btn btn-secondary">Delete</button>
               </div>
             </div>
           </div>

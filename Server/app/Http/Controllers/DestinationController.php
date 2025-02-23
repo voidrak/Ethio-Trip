@@ -92,6 +92,6 @@ class DestinationController extends Controller
      */
     public function destroy(Destination $destination)
     {
-        //
+        return $destination->delete();
     }
 }

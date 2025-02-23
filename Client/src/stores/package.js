@@ -23,6 +23,25 @@ export const usePackageStore = defineStore("packageStore", {
             return data
 
         },
+        async deletePackage(packageId) {
+            const res = await fetch(`/api/packages/${packageId}`, {
+                method: 'DELETE',
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    "Content-Type": "application/json",
+                },
+            });
+            const data = res.status !== 204 ? await res.json() : {};
+            console.log(data);
+
+            if (data.errors) {
+                this.errors = data.errors;
+            } else {
+                return data;
+                // window.reload()
+            }
+
+        },
 
 
         async getAllPackages() {

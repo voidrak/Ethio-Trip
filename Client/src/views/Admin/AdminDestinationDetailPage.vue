@@ -10,6 +10,7 @@ const route = useRoute();
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const { getDestination } = useDestinationStore()
+const { deleteDestination } = useDestinationStore()
 
 const isEditDestinationOpen = ref(false);
 const selectedDestination = ref(null)
@@ -35,8 +36,10 @@ function closeEditDestinationModal() {
 
 const handleUpdate = async () => {
   destination.value = await getDestination(route.params.id);
-
-
+}
+const handleDelete = async (destinationId) => {
+ await deleteDestination(destinationId);
+  
 }
 
 
@@ -54,12 +57,19 @@ const handleUpdate = async () => {
 
     <section class="light">
       <div class="container py-2">
-
-        <div class="w-full">
+      <div class="flex gap-x-1">
+        
+        <div class="w-full ">
           <div @click.prevent="openEditDestinationModal(destination)" class="mx-auto">
             <button class="mb-8 bg-[#0076bd] px-3 py-2 rounded-md text-white">Update Destination</button>
           </div>
         </div>
+        <div class="w-full">
+          <div @click.prevent="handleDelete(destination.id)" class="mx-auto">
+            <button class="mb-8 bg-red-500 px-3 py-2 rounded-md text-white">Delete Destination</button>
+          </div>
+        </div>
+      </div>
 
         <article class="postcard light blue" id="">
           <a class="postcard__img_link">
