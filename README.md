@@ -2,7 +2,6 @@
 
 # Ethio-Trip - Tour and Travel Website
 
-!-- Replace with actual banner image -->
 
 Welcome to **Ethio-Trip**, a modern and feature-rich tour and travel website built using the Laravel framework. Ethio-Trip aims to empower travelers to explore Ethiopia’s breathtaking landscapes, rich cultural heritage, and vibrant destinations with ease. Whether you're planning a historical tour, an adventurous trek, or a relaxing getaway, Ethio-Trip provides a seamless platform for discovering, booking, and managing your travel experiences.
 
